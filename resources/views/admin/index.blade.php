@@ -9,10 +9,14 @@
         <div class="col-sm-6">
             <h1><strong>Lanches</strong></h1>
         </div>
-        <div class="col-sm-6">
-            <a href="{{route('admin.create')}}" class="btn btn-info float-sm-right ml-5"><i class="fas fa-users"></i>Cadastrar-Lanches</a>
-            <a href="{{route('combo.create')}}" class="btn btn-info float-sm-right"><i class="fas fa-users"></i>Cadastrar-Combos</a>
+        <div class="">
+            <div class=" d-flex justify-content-start">
+                <a href="{{route('combo.create')}}" class="btn btn-info float-sm-right ml-3"><i class="fas fa-users"></i>Cadastrar-Combos</a>
+                <a href="{{route('admin.create')}}" class="btn btn-info float-sm-right ml-3"><i class="fas fa-users"></i>Cadastrar-Lanche</a>
+                <a href="{{route('drink.create')}}" class="btn btn-info float-sm-right ml-3"><i class="fas fa-users"></i>Cadastrar-Bebidas</a>
+            </div>
         </div>
+        
         </div>
     </div>
 @stop
@@ -82,9 +86,9 @@
                     <div class="card card-info">
                         <div class="card-header">
                             <h3 class="card-title">Listagem de Lanches</h3>
-                            <a href="{{route('user.index')}}" class="text-center">LANCHES</a>
-                            <a href="{{route('comboIndex.show')}}" class="m-3">COMBOS</a>
-                            <a href="{{route('drink.show')}}" class="m-3">BEBIDAS</a>
+                            <a href="{{route('admin.index')}}" class="text-center ml-5">LANCHES</a>
+                            <a href="{{route('combo.index')}}" class="m-3">COMBOS</a>
+                            <a href="{{route('drink.index')}}" class="m-3">BEBIDAS</a>
                             <a href="{{route('user.cart')}}"class="float-right" title="Ver suas Compras"><i class="fas fa-shopping-cart"></i></a>
                           
                         </div>

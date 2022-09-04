@@ -50,9 +50,10 @@ Route::get('/comboIndex/show',[ModelProductController::class, 'comboshow'])->nam
 Route::get('/drink/create',[ModelProductController::class, 'drinkCreate'])->name('drink.create');
 Route::get('/drink/index' ,[ModelProductController::class, 'drinkIndex'])->name('drink.index');
 Route::post('/drink/store',[ModelProductController::class, 'drinkStore'])->name('drink.store');
-
+Route::get('/drink/show',[ModelProductController::class, 'drinkShow'])->name('drink.show');
 
 //cart
 
-Route::get('/user/cart',[ModelProductController::class,'cart'])->name('user.cart');
-Route::get('/drink/show',[ModelProductController::class, 'drinkShow'])->name('drink.show');
+Route::post('/cart/store/{id}',[ModelProductController::class, 'cartStore'])->name('cart.store');
+Route::get('/show/cart',[ModelProductController::class,'showCart'])->name('show.cart');
+

@@ -22,7 +22,7 @@
                 <div class="col-12 col">
                     <div class="card card-info">
                         <div class="card-header ">
-                            <a href="{{route('user.index')}}" class="text-center">LANCHES</a>
+                            <a href="{{route('user.index')}}" class="text-center ml-5">LANCHES</a>
                             <a href="{{route('comboIndex.show')}}" class="m-3">COMBOS</a>
                             <a href="{{route('drink.show')}}" class="m-3">BEBIDAS</a>
                             <a href="{{route('user.cart')}}"class="float-right" title="Ver suas Compras"><i class="fas fa-shopping-cart"></i></a>

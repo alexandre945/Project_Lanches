@@ -7,7 +7,35 @@
 @stop
 
 @section('content')
-    <div class="card card-info">
+@if(isset($data) && count($data) > 0)
+        <table class="table">
+
+            <thead>
+                <tr>
+
+                    <th>Nome</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                    @foreach($data as $item)
+                    @dd($item)
+                    @dd($item->name)
+                            <tr>
+                                <th></th>
+                            </tr>
+                        @endforeach
+
+                
+
+            </tbody>
+        </table>
+  @else
+  <P>não ha itens no carrinho</P>
+@endif
+
+
+    {{-- <div class="card card-info">
         <div class="card-header">
             <h3 class="card-title">Produtos do Carrinho</h3>
         </div>
@@ -57,7 +85,7 @@
         </div>
         
         </form>
-    </div>  
+    </div>   --}}
 @stop
 @section('css')
     <style>

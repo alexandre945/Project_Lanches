@@ -82,13 +82,6 @@ class ModelProductController extends Controller
 
     }
 
-    public function cart()
-    {
-        
-
-        return view('user.cart');
-    }
-
     //combos
 
     public function comboCreate()
@@ -166,5 +159,31 @@ class ModelProductController extends Controller
         $product = $product::where('categorie_id', 4)->get();
 
         return view ('user.show',compact('product'));  
+    }
+
+    //cart
+
+    public function cartStore(Request $request,$id)
+    {
+    
+
+      $product = Product::find($id);
+
+        if($product){
+            $cart = session('car', []);
+            array_push($cart, $product);
+            session(['car' => $cart]);
+
+        }
+        return redirect()->route('user.index');
+    }
+
+    public function showCart(Request $request)
+    {
+        $cart = session('car', []);
+       
+        $data = ['car' => $cart];
+dd($data);
+       return view ('user.cart',compact('data'));
     }
 }

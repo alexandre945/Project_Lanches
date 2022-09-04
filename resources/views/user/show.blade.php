@@ -25,7 +25,7 @@
                             <a href="{{route('user.index')}}" class="text-center">LANCHES</a>
                             <a href="{{route('comboIndex.show')}}" class="m-3">COMBOS</a>
                             <a href="{{route('drink.show')}}" class="m-3">BEBIDAS</a>
-                            <a href="{{route('user.cart')}}"class="float-right" title="Ver suas Compras"><i class="fas fa-shopping-cart"></i></a>
+                            <a href="{{route('show.cart')}}"class="float-right" title="Ver suas Compras"><i class="fas fa-shopping-cart"></i></a>
                           
                         </div>
                         @if(session('message'))
@@ -60,18 +60,18 @@
                                     <tbody>
                                     @foreach($product as $item)
                                         <tr>
-                                        <th>{{ $item->name }}</th>
-                                        <th>{{ $item->description}}</th>
-                                        <th>{{ $item->price }}</th>
-                                        <td>
-                                            <form action="" method="POST" style="display: inline" >
-                                            @method('Post')
-                                            @csrf
-                                            <button class="btn btn-primary" title="Adicionar ao carrinho">
-                                                <i class="fas fa-shopping-cart"></i>
-                                            </button>
-                                            </form>
-                                        </td>
+                                            <th>{{ $item->name }}</th>
+                                            <th>{{ $item->description}}</th>
+                                            <th>{{ $item->price }}</th>
+                                            <td>
+                                                <form action="{{route('cart.store',$item->id)}}" method="POST" style="display: inline" >
+                                                @method('Post')
+                                                @csrf
+                                                <button class="btn btn-primary" title="Adicionar ao carrinho">
+                                                    <i class="fas fa-shopping-cart"></i>
+                                                </button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
