@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Edit Product')
+@section('title', 'Carrinho')
 
 @section('content_header')
   <h1> Produtos do Carrinho</h1>
@@ -9,25 +9,25 @@
 @section('content')
 @if(isset($data) && count($data) > 0)
         <table class="table">
-
             <thead>
                 <tr>
-
+                    <th>quantidade</th>
                     <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Descrição</th>
+                    <th>Sub-Total</th>
                 </tr>
             </thead>
             <tbody>
-            
-                    @foreach($data as $item)
-                    @dd($item)
-                    @dd($item->name)
-                            <tr>
-                                <th></th>
-                            </tr>
-                        @endforeach
-
-                
-
+                @foreach($data['car'] as $item)
+                    <tr>
+                        <th></th>
+                        <th>{{$item->name}}</th>
+                        <th>{{$item->price}}</th>
+                        <th>{{$item->description}}</th>
+                        <th></th>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
   @else

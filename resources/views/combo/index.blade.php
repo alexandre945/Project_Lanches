@@ -88,7 +88,7 @@
                             <a href="{{route('admin.index')}}" class="text-center ml-5">LANCHES</a>
                             <a href="{{route('combo.index')}}" class="m-3">COMBOS</a>
                             <a href="{{route('drink.index')}}" class="m-3">BEBIDAS</a>
-                            <a href="{{route('user.cart')}}"class="float-right" title="Ver suas Compras"><i class="fas fa-shopping-cart"></i></a>
+                            <a href="{{route('show.cart')}}"class="float-right" title="Ver suas Compras"><i class="fas fa-shopping-cart"></i></a>
                           
                         </div>
                         @if(session('message'))

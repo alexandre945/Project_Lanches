@@ -165,8 +165,6 @@ class ModelProductController extends Controller
 
     public function cartStore(Request $request,$id)
     {
-    
-
       $product = Product::find($id);
 
         if($product){
@@ -183,7 +181,6 @@ class ModelProductController extends Controller
         $cart = session('car', []);
        
         $data = ['car' => $cart];
-dd($data);
        return view ('user.cart',compact('data'));
     }
 }

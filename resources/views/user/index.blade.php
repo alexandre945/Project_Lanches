@@ -72,7 +72,7 @@
                                                     @method('Post')
                                                     @csrf
                                                     <button class="btn btn-primary" title="Adicionar ao carrinho">
-                                                        <i class="fas fa-shopping-cart"></i>
+                                                        <i class="fas fa-shopping-cart">Adicionar</i>
                                                     </button>
                                                 </form>
                                             </td>
