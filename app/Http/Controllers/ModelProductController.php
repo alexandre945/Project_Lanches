@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Demand;
+use App\Models\User;
+use App\Models\ItenDemand;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ModelProductController extends Controller
@@ -147,7 +151,7 @@ class ModelProductController extends Controller
     {
         $product =  New Product;
     
-        $product = $product::where('categorie_id', 4)->get();
+        $product = $product::where('categorie_id', 3)->get();
         
   
          return view ('drink.index',compact('product')); 
@@ -156,7 +160,7 @@ class ModelProductController extends Controller
     public function drinkShow(Request $request)
     {
         $product =  New Product;
-        $product = $product::where('categorie_id', 4)->get();
+        $product = $product::where('categorie_id', 3)->get();
 
         return view ('user.show',compact('product'));  
     }
@@ -178,9 +182,28 @@ class ModelProductController extends Controller
 
     public function showCart(Request $request)
     {
+
+
+     $user = user::first();
+
+     $user->userdemands;
+
+   
+
+        // $demands = Demand::where([
+        //     'status' => 'RE',
+        //     'user_id' => Auth::id()
+        // ])->get();
+       
+
+        // dd([
+        //   $demands,
+        //   $demands[0],
+        //   $demands[0]->item_demands[0]->product
+        // ]);
         $cart = session('car', []);
        
         $data = ['car' => $cart];
-       return view ('user.cart',compact('data'));
+           return view ('user.cart',compact('user','data'));
     }
 }

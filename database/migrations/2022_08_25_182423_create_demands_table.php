@@ -15,7 +15,7 @@ class CreateDemandsTable extends Migration
     {
         Schema::create('demands', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('status', 4);
+            $table->enum('status', ['RE', 'PG','PRD','FCHD']);
             $table->datetime('datedemand');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();

@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ItenDemand extends Model
 {
-    use HasFactory;
+   public function demand()
+   {
+    return $this->belongsTo(Demand::class);
+   }
 }

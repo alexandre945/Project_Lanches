@@ -3,7 +3,14 @@
 @section('title', 'Carrinho')
 
 @section('content_header')
-  <h1> Produtos do Carrinho</h1>
+<div class="card m-5">
+    <div class="text-center mt-2">
+        <h1> Produtos do seu Carrinho </h1>
+        <p>{{$user->name}}</p>
+    </div>
+  
+</div>
+
 @stop
 
 @section('content')
@@ -19,6 +26,7 @@
                 </tr>
             </thead>
             <tbody>
+               
                 @foreach($data['car'] as $item)
                     <tr>
                         <th></th>
