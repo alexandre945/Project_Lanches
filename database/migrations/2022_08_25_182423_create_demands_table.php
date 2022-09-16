@@ -15,11 +15,10 @@ class CreateDemandsTable extends Migration
     {
         Schema::create('demands', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('status', ['RE', 'PG','PRD','FCHD']);
+            $table->enum('status', ['RE', 'PG','PRD','FCHD'])->default('RE');
+            $table->string('nunber')->default('1');
             $table->datetime('datedemand');
-            $table->unsignedBigInteger('user_id');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

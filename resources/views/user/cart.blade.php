@@ -3,97 +3,65 @@
 @section('title', 'Carrinho')
 
 @section('content_header')
-<div class="card m-5">
-    <div class="text-center mt-2">
-        <h1> Produtos do seu Carrinho </h1>
-        <p>{{$user->name}}</p>
-    </div>
-  
-</div>
+
 
 @stop
 
 @section('content')
-@if(isset($data) && count($data) > 0)
+<div class="container">
+    <div class="row"> 
+        <div class="card justify-contente-center m-5 p-5">
+            <div class="text-center">
+                <h2> Produtos do seu Carrinho </h2>
+                <h5>PEDIDO:{{$data->id}}</h5>
+                <h5>CRIADO EM: {{$data->datedemand}}</h5>
+            </div>
+        </div>  
         <table class="table">
             <thead>
                 <tr>
-                    <th>quantidade</th>
-                    <th>Nome</th>
-                    <th>Preço</th>
-                    <th>Descrição</th>
-                    <th>Sub-Total</th>
+                    <th>Imagem</th>
+                    <th>Quantidade</th>
+                    <th>Produto</th>
+                    <th>Valor Unitario</th>
+                    <th>Sub-total</th>
+                    
                 </tr>
             </thead>
             <tbody>
+                {{-- @php
+                  $Total_pedido,
+                @endphp --}}
                
-                @foreach($data['car'] as $item)
+               
+                @foreach($data->productId as $item)
                     <tr>
-                        <th></th>
-                        <th>{{$item->name}}</th>
-                        <th>{{$item->price}}</th>
-                        <th>{{$item->description}}</th>
-                        <th></th>
+                        <td>
+                            <img src="{{ asset('storage/'.$item->produtsIds->image) }}" style="width: 60px">
+                        </td>
+                        <td class= 'justify-contente-center'>
+                            <div class="justify-contente-center">
+                                <a href="#"><i class="fa fa-circle">-</i></a>
+                                <span>{{$item->quanty}}</span>
+                                <a href="#"><i class="fas fa-circle">+</i></a>
+                            </div>
+                            {{-- <a href="#">retirar produto do carrinho</a> --}}
+                        </td>    
+                        <td>{{$item->produtsIds->name}}</td> 
+                        <td>R${{$item->produtsIds->price}}</td>
+                        <td></td>  
+                       
+                    
+                     
+                     
                     </tr>
                 @endforeach
             </tbody>
         </table>
-  @else
-  <P>não ha itens no carrinho</P>
-@endif
+       
+    </div>
+</div>
 
-
-    {{-- <div class="card card-info">
-        <div class="card-header">
-            <h3 class="card-title">Produtos do Carrinho</h3>
-        </div>
-        <div class="card-body">
-            <p>Numero do Pedido:</p>
-            <p>Data de criação do Pedido:</p>
-        </div>
-        <form class="form-horizontal" action="" method="POST">
-            @csrf
-            @method('PUT')      
-            <div class="container">
-
-
-            </div> 
-            <div class="form-group row">
-                <label for="title" class="col-md-4 col-form-label text-md-right">Lanche:</label>    
-                <div class="col-md-6">
-                    <input id="name" type="text" class="form-control" name="name" value="" autofocus>    
-
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="description" class="col-md-4 col-form-label text-md-right">Descrição:</label>    
-                <div class="col-md-6">
-                    <input id="description" type="text" class="form-control" name="description" value="" autofocus>    
-                 
-                </div>
-            </div>
-             
-            <div class="form-group row">
-                <label for="image" class="col-md-4 col-form-label text-md-right">Preço:</label>    
-                <div class="col-md-6">
-                    <input id="price" type="text" class="form-control" name="price" value="" autofocus>    
-                 
-                </div>
-            </div>
-
-      
-        
-            <div class="form-group row mb-0">
-                <div class="col-md-6 offset-md-4  ">
-                    <button type="submit" class="btn btn-primary float-right">
-                        Alterar
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        </form>
-    </div>   --}}
 @stop
 @section('css')
     <style>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItenDemandsTable extends Migration
+class CreateDemandProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateItenDemandsTable extends Migration
      */
     public function up()
     {
-        Schema::create('iten_demands', function (Blueprint $table) {
+        Schema::create('demand__products', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('amout')->default();
-            $table->decimal('price',8, 2)->nullable();
-            $table->datetime('dateiten');
             $table->integer('product_id')->unsigned();
             $table->integer('demand_id')->unsigned();
-            $table->timestamps();
+            $table->string('quanty')->default('1');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('demand_id')->references('id')->on('demands')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -33,6 +31,6 @@ class CreateItenDemandsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('iten_demands');
+        Schema::dropIfExists('demand__products');
     }
 }

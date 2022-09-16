@@ -18,5 +18,16 @@ protected $fillable = ['status', 'datedemand','user_id'];
   {
     return $this->belongsTo(User::class);
   }
+
+  public function products()
+  {
+    return $this->hasMany(Product::class,);
+  }
+
+  public function productId()
+  {
+    return $this->hasMany(Demand_Product::class);
+  }
+
 }
 

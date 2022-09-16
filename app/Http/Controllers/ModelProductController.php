@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Demand;
+use App\Models\Demand_Product;
 use App\Models\User;
 use App\Models\ItenDemand;
 use Illuminate\Support\Facades\Auth;
@@ -169,41 +170,42 @@ class ModelProductController extends Controller
 
     public function cartStore(Request $request,$id)
     {
-      $product = Product::find($id);
+       $product = Product::find($id);
+       $user = Auth::user()->id;      
 
-        if($product){
-            $cart = session('car', []);
-            array_push($cart, $product);
-            session(['car' => $cart]);
+        $demand = Demand::where([
+            'status' => 'RE',
+            'user_id' => $user,
+        ])->first();
 
+        $product_demand = Demand_Product::where('demand_id', $demand->id)->where('product_id', $id)->first();
+
+        if($demand) {
+            if ($product_demand == null) {
+                Demand_Product::create([
+                    'product_id' => $id,
+                    'demand_id' => $demand->id,
+                    'quanty' => 1,
+                ]);
+            } else {
+                $product_demand->update([
+                    'quanty' => 2,
+                ]);
+            }
+            
         }
         return redirect()->route('user.index');
     }
 
-    public function showCart(Request $request)
+    public function showCart()
     {
+        $data = Demand::where([
+            'status' => 'RE',
+            'user_id' => Auth::user()->id,
+        ])
+        ->with('productId')
+        ->first();
 
-
-     $user = user::first();
-
-     $user->userdemands;
-
-   
-
-        // $demands = Demand::where([
-        //     'status' => 'RE',
-        //     'user_id' => Auth::id()
-        // ])->get();
-       
-
-        // dd([
-        //   $demands,
-        //   $demands[0],
-        //   $demands[0]->item_demands[0]->product
-        // ]);
-        $cart = session('car', []);
-       
-        $data = ['car' => $cart];
-           return view ('user.cart',compact('user','data'));
+        return view ('user.cart',compact('data'));
     }
 }
