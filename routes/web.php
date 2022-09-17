@@ -56,4 +56,5 @@ Route::get('/drink/show',[ModelProductController::class, 'drinkShow'])->name('dr
 
 Route::post('/cart/store/{id}',[ModelProductController::class, 'cartStore'])->name('cart.store');
 Route::get('/show/cart',[ModelProductController::class,'showCart'])->name('show.cart');
+Route::delete('/cart/delete/{id}',[ModelProductController::class, 'deleteCart'])->name('delete.cart');
 

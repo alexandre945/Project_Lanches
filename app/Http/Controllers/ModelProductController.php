@@ -208,4 +208,14 @@ class ModelProductController extends Controller
 
         return view ('user.cart',compact('data'));
     }
+
+    public function deleteCart( $id)
+    {
+      
+        $demandProduct =  New Demand_Product;
+
+        $demandProduct = $demandProduct::findOrFail($id)->delete();
+         
+        return redirect()->route('show.cart',compact('demandProduct'))->with('success','Produto excluido com sucesso');
+    }  
 }
