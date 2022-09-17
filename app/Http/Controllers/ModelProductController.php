@@ -171,12 +171,22 @@ class ModelProductController extends Controller
     public function cartStore(Request $request,$id)
     {
        $product = Product::find($id);
-       $user = Auth::user()->id;      
-
+       $demand = New Demand;
+       $user = Auth::user()->id; 
+       
+       
+        $demand = Demand::create([
+            'status' => 'RE',
+            'user_id' => $user,
+            'datedemand'=> '2022_09_17'
+           ]);
+       
         $demand = Demand::where([
             'status' => 'RE',
             'user_id' => $user,
         ])->first();
+       
+
 
         $product_demand = Demand_Product::where('demand_id', $demand->id)->where('product_id', $id)->first();
 
@@ -194,7 +204,7 @@ class ModelProductController extends Controller
             }
             
         }
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('status','produto adicionado ao carrinho');
     }
 
     public function showCart()

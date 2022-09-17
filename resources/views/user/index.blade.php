@@ -29,22 +29,30 @@
                           
                         </div>
                         @if(session('message'))
-                        <div class="alert alert-success">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <p>{{session('message')}}</p>
+                            <div class="alert alert-success">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <p>{{session('message')}}</p>
                           </div>
                         @endif
                         @if(session('missage'))
-                        <div class="alert alert-success">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <p>{{session('missage')}}</p>
-                          </div>
+                            <div class="alert alert-success">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <p>{{session('missage')}}</p>
+                            </div>
                         @endif
                         @if(session('success'))
-                        <div class="alert alert-success">
+                            <div class="alert alert-success">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <p>{{session('success')}}</p>
+                            </div>
+                        @endif
+
+                        @if(session('status'))
+                           <div class="alert alert-success">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <p>{{session('success')}}</p>
-                          </div>
+                            <p>{{session('status')}}</p>
+
+                           </div>
                         @endif
                         <div class="card-body">
                             @if (isset($product) && $product->isNotEmpty())

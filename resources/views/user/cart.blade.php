@@ -18,9 +18,9 @@
     <div class="row"> 
         <div class="card justify-contente-center m-5 p-5">
             <div class="text-center">
-                <h2> Produtos do seu Carrinho </h2>
+                <h2> Produtos do seu Carrinho</h2>
                 <h5>PEDIDO:{{$data->id}}</h5>
-                <h5>CRIADO EM: {{$data->datedemand}}</h5>
+                <h5>CRIADO EM: {{$data->created_at}}</h5>
             </div>
         </div>  
    
@@ -64,15 +64,14 @@
                         <td>{{$item->produtsIds->name}}</td> 
                         <td>R${{$item->produtsIds->price}}</td>
                         <td></td>  
-                       
-                    
-                     
-                     
                     </tr>
                 @endforeach
             </tbody>
         </table>
-       
+        <div class=" flex">
+            <a href="{{route('user.index')}}"><button class="btn btn-success m-2">CONTINUAR COMPRANDO</button></a>
+            <input type="text" name="total" value="TOTAL" id="total" class="text-center bg-primary">
+        </div>
     </div>
 </div>
 
