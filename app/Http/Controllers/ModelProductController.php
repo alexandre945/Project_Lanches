@@ -171,24 +171,33 @@ class ModelProductController extends Controller
     public function cartStore(Request $request,$id)
     {
        $product = Product::find($id);
-       $demand = New Demand;
        $user = Auth::user()->id; 
+
+       $demand = Demand::where([
+        'status' => 'RE',
+        'user_id' => Auth::user()->id,
+    ])->with('productId')->first();
        
+       if(!$demand){
+            $demand = Demand::create([
+                'status' => 'RE',
+                'user_id' => $user,
+                'datedemand'=> '2022_09_17'
+            ]);
+
+       }
+      
        
-        $demand = Demand::create([
-            'status' => 'RE',
-            'user_id' => $user,
-            'datedemand'=> '2022_09_17'
-           ]);
-       
-        $demand = Demand::where([
-            'status' => 'RE',
-            'user_id' => $user,
-        ])->first();
+        // $demand = Demand::where([
+        //     'status' => 'RE',
+        //     'user_id' => $user,
+        // ])->first();
        
 
 
-        $product_demand = Demand_Product::where('demand_id', $demand->id)->where('product_id', $id)->first();
+        $product_demand = Demand_Product::where('demand_id', $demand->id)
+        ->where('product_id', $id)
+        ->first();
 
         if($demand) {
             if ($product_demand == null) {
@@ -209,14 +218,16 @@ class ModelProductController extends Controller
 
     public function showCart()
     {
+        $user = Auth::user()->id; 
+        $datas = User::firstWhere('email','alex@gmail.com');
         $data = Demand::where([
             'status' => 'RE',
             'user_id' => Auth::user()->id,
-        ])
-        ->with('productId')
-        ->first();
+        ])->with('productId')->first();
+      
+    //    $data = Auth::user()->with('productId()')->sum('price');
 
-        return view ('user.cart',compact('data'));
+        return view ('user.cart',compact('data','datas'));
     }
 
     public function deleteCart( $id)

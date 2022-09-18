@@ -21,5 +21,7 @@ class Product extends Model
   {
     return $this->belongsToMany(Demand_Product::class);
    }
+
+
   
 }

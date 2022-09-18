@@ -18,7 +18,9 @@
     <div class="row"> 
         <div class="card justify-contente-center m-5 p-5">
             <div class="text-center">
+              
                 <h2> Produtos do seu Carrinho</h2>
+             <h6>DE:{{$datas->name}}</h6>
                 <h5>PEDIDO:{{$data->id}}</h5>
                 <h5>CRIADO EM: {{$data->created_at}}</h5>
             </div>
@@ -44,33 +46,33 @@
                
                 @foreach($data->productId as $item)
                     <tr>
-                        <td>
-                          
-                            <form action="{{route('delete.cart',$item->id)}}" method="POST" style="display: inline" >
-                                @method('DELETE')
-                                @csrf
-                                    <button class="btn btn-danger" title="Excluir">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                            </form>
-                        </td>
-                        <td class= 'justify-contente-center'>
-                            <div class="justify-contente-center">
-                                <a href="#"><i class="fa fa-circle">-</i></a>
-                                <span>{{$item->quanty}}</span>
-                                <a href="#"><i class="fas fa-circle">+</i></a>
-                            </div>
-                        </td>    
-                        <td>{{$item->produtsIds->name}}</td> 
-                        <td>R${{$item->produtsIds->price}}</td>
-                        <td></td>  
+                            <td>
+                                <form action="{{route('delete.cart',$item->id)}}" method="POST" style="display: inline" >
+                                    @method('DELETE')
+                                    @csrf
+                                        <button class="btn btn-danger" title="Excluir">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                </form>
+                            </td>
+                            <td class= 'justify-contente-center'>
+                                <div class="justify-contente-center">
+                                    <a href="#"><i class="fa fa-circle">-</i></a>
+                                    <span>{{$item->quanty}}</span>
+                                    <a href="#"><i class="fas fa-circle">+</i></a>
+                                </div>
+                            </td>    
+                            <td>{{$item->produtsIds->name}}</td> 
+                            <td>R$-{{$item->produtsIds->price}}</td>
+                            <td></td>  
                     </tr>
                 @endforeach
             </tbody>
         </table>
         <div class=" flex">
             <a href="{{route('user.index')}}"><button class="btn btn-success m-2">CONTINUAR COMPRANDO</button></a>
-            <input type="text" name="total" value="TOTAL" id="total" class="text-center bg-primary">
+            <input type="text" name="total" value="" placeholder="TOTAL"  disabled class="text-center bg-primary text-dark">
+            <a href="#"><button class="btn btn-success m-2">FECHAR PEDIDO</button></a>
         </div>
     </div>
 </div>
