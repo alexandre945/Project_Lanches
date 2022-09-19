@@ -216,18 +216,17 @@ class ModelProductController extends Controller
         return redirect()->route('user.index')->with('status','produto adicionado ao carrinho');
     }
 
-    public function showCart()
+    public function showCart(Request $request)
     {
-        $user = Auth::user()->id; 
-        $datas = User::firstWhere('email','alex@gmail.com');
+        $user = Auth::user()->id;
+        $users = Auth::user()->name; 
         $data = Demand::where([
             'status' => 'RE',
             'user_id' => Auth::user()->id,
         ])->with('productId')->first();
-      
-    //    $data = Auth::user()->with('productId()')->sum('price');
+        
 
-        return view ('user.cart',compact('data','datas'));
+        return view ('user.cart',compact('data','users'));
     }
 
     public function deleteCart( $id)
