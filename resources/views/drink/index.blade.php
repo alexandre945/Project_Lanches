@@ -21,6 +21,7 @@
 @stop
 
 @section('content')
+
     <section class="content">
         <div class="container-fluid">
             {{--
@@ -111,7 +112,7 @@
                         @endif
                         <div class="card-body">
                             @if (isset($product) && $product->isNotEmpty())
-                                <table class="table table-striped table-bordered table-hover">
+                                <table class="table-responsive table-bordered">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
@@ -122,24 +123,28 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($product as $item)
-                                        <tr>
-                                        <th>{{ $item->id }}</th>
-                                        <th>{{ $item->name }}</th>
-                                        <th>{{ $item->description}}</th>
-                                        <th>{{ $item->price }}</th>
-                                        <td>
-                                            <a href="{{ route('admin.update',$item->id)}}" title="Editar" class="btn btn-primary"> <i class="fas fa-edit"></i> </a>
-                                            <form action="{{route('admin.delete',$item->id)}}" method="POST" style="display: inline" >
-                                            @method('DELETE')
-                                            @csrf
-                                            <button class="btn btn-danger" title="Excluir">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                            </form>
-                                        </td>
-                                        </tr>
-                                    @endforeach
+                                        @foreach($product as $item)
+                                            <tr>
+                                            <th class="h6">{{ $item->id }}</th>
+                                            <th class="h6">{{ $item->name }}</th>
+                                            <th class="h6">{{ $item->description}}</th>
+                                            <th class="h6">{{ $item->price }}</th>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <a href="{{ route('admin.update',$item->id)}}" title="Editar" class="btn btn-primary m-1"> <i class="fas fa-edit"></i> </a>
+                                                    <form action="{{route('admin.delete',$item->id)}}" method="POST" style="display: inline" >
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button class="btn btn-danger p-2" title="Excluir">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                    </form>
+
+                                                </div>
+                                            
+                                            </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             @else
@@ -163,6 +168,7 @@
             </div>
         </div>
     </section>
+    
 @endsection
 @section('css')
 <style>

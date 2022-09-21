@@ -12,7 +12,11 @@
     <div class="row">
         <div class="col-12">
 
-
+@can('user')
+dados do suario
+@elsecan('adimin')
+dados do adimin
+@endcan
         </div>
     </div>
 @stop

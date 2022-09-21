@@ -111,12 +111,12 @@
                         @endif
                         <div class="card-body">
                             @if (isset($product) && $product->isNotEmpty())
-                                <table class="table table-striped table-bordered table-hover">
+                                <table class="table-repnsive table-bordered">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th>Descrição</th>
+                                        <th style="font-size:12px;">Descrição</th>
                                         <th>Preço</th>
                                         <th>Imagem</th>
                                         <th>Ação</th>

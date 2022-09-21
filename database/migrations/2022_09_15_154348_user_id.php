@@ -28,7 +28,7 @@ class UserId extends Migration
     public function down()
     {
         Schema::table('demands', function (Blueprint $table) {
-            //
+            $table->dropColumn('user_id');
         });
     }
 }

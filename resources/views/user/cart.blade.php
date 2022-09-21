@@ -21,7 +21,7 @@
                 <h2> Produtos do seu Carrinho</h2>
              <h6>Nome do usuario::{{$users}}</h6>
                 <h5>PEDIDO: {{$data->id}}</h5>
-                <h5>CRIADO EM: {{$data->created_at}}</h5>
+                <h6>CRIADO EM: {{$data->created_at}}</h6>
             </div>
         </div>  
    
@@ -38,11 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- @php
-                  $Total_pedido,
-                @endphp --}}
-
-               
+             
                 @foreach($data->productId as $item)
                     <tr>
                             <td>

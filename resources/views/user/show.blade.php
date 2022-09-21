@@ -48,20 +48,20 @@
                         @endif
                         <div class="card-body">
                             @if (isset($product) && $product->isNotEmpty())
-                                <table class="table table-striped table-bordered table-hover table-reponsive">
+                                <table class="table-reponsive table-bordered">
                                     <thead>
                                     <tr>
                                         <th>Name</th>
                                         <th>Descrição</th>
                                         <th>Preço</th>
-                                        <th>Adicione ao carrinho</th>
+                                        <th>Adicionar</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($product as $item)
                                         <tr>
                                             <th>{{ $item->name }}</th>
-                                            <th>{{ $item->description}}</th>
+                                            <th style="font-size: 12px;">{{ $item->description}}</th>
                                             <th>{{ $item->price }}</th>
                                             <td>
                                                 <form action="{{route('cart.store',$item->id)}}" method="POST" style="display: inline" >

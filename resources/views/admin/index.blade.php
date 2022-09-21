@@ -112,10 +112,10 @@
                         @endif
                         <div class="card-body">
                             @if (isset($product) && $product->isNotEmpty())
-                                <table class="table table-striped table-bordered table-hover">
+                                <table class="table-responsive">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                       
                                         <th>Name</th>
                                         <th>Descrição</th>
                                         <th>Preço</th>
@@ -125,24 +125,24 @@
                                     </thead>
                                     <tbody>
                                     @foreach($product as $item)
-                                        <tr>
-                                        <th>{{ $item->id }}</th>
-                                        <th>{{ $item->name }}</th>
-                                        <th>{{ $item->description}}</th>
-                                        <th>{{ $item->price }}</th>
-                                        <td>
-                                            <img src="{{ asset('storage/'.$item->image) }}" style="width: 50px">
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('admin.update',$item->id)}}" title="Editar" class="btn btn-primary"> <i class="fas fa-edit"></i> </a>
-                                            <form action="{{route('admin.delete',$item->id)}}" method="POST" style="display: inline" >
-                                            @method('DELETE')
-                                            @csrf
-                                            <button class="btn btn-danger" title="Excluir">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                            </form>
-                                        </td>
+                                        <tr class="p-2">
+                                       
+                                            <th>{{ $item->name }}</th>
+                                            <th>{{ $item->description}}</th>
+                                            <th>{{ $item->price }}</th>
+                                            <td class="p-2">
+                                                <img src="{{ asset('storage/'.$item->image) }}" style="width: 50px">
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('admin.update',$item->id)}}" title="Editar" class="btn btn-primary"> <i class="fas fa-edit"></i> </a>
+                                                <form action="{{route('admin.delete',$item->id)}}" method="POST" style="display: inline" >
+                                                @method('DELETE')
+                                                @csrf
+                                                <button class="btn btn-danger" title="Excluir">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

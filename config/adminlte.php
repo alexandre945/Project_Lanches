@@ -295,40 +295,48 @@ return [
         //     'label_color' => 'success',
         // ],
         // ['header' => 'account_settings'],
+       
         [
+            
             'text' => 'Cadastrar Lanche',
             'url'  => 'admin/create',
             'icon' => 'fas fa-fw fa-list',
+            'can'  => ['admin'],
         ],
-
+     
         [
             'text' => 'Cadastrar Combos',
             'url'  => 'combo/create',
             'icon' => 'fas fa-fw fa-list',
+            'can'  => ['admin'],
         ],
 
         [
             'text' => 'Cadastrar Bebidas',
             'url'  => 'drink/create',
             'icon' => 'fas fa-fw fa-list',
+            'can'  => ['admin'],
         ],
         
         [
             'text' => 'Lista de  Lanche',
             'url'  => 'admin',
             'icon' => 'fas fa-fw fa-list',
+            'can'  => ['admin'],
         ],
 
         [
             'text' => 'Lista de Combos',
             'url'  => 'combo/index',
             'icon' => 'fas fa-fw fa-list',
+            'can'  => ['admin'],
         ],
 
         [
             'text' => 'Lista de Bebidas',
             'url'  => 'drink/index',
             'icon' => 'fas fa-fw fa-list',
+            'can'  => ['admin'],
         ],
 
         [
