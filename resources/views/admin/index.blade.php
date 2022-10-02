@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
         <div class="col-sm-6">
-            <h1><strong>Lanches</strong></h1>
+            <h1  class="text-center"><strong>Lanches</strong></h1>
         </div>
         <div class="">
             <div class=" d-flex justify-content-start">
@@ -112,16 +112,16 @@
                         @endif
                         <div class="card-body">
                             @if (isset($product) && $product->isNotEmpty())
-                                <table class="table-responsive">
+                                <table class="table-responsive table-bordered">
                                     <thead>
-                                    <tr>
-                                       
-                                        <th>Name</th>
-                                        <th>Descrição</th>
-                                        <th>Preço</th>
-                                        <th>Imagem</th>
-                                        <th>Ação</th>
-                                    </tr>
+                                        <tr>
+                                        
+                                            <th>Name</th>
+                                            <th>Descrição</th>
+                                            <th>Preço</th>
+                                            <th>Imagem</th>
+                                            <th>Ação</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($product as $item)
@@ -134,14 +134,17 @@
                                                 <img src="{{ asset('storage/'.$item->image) }}" style="width: 50px">
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.update',$item->id)}}" title="Editar" class="btn btn-primary"> <i class="fas fa-edit"></i> </a>
-                                                <form action="{{route('admin.delete',$item->id)}}" method="POST" style="display: inline" >
-                                                @method('DELETE')
-                                                @csrf
-                                                <button class="btn btn-danger" title="Excluir">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                                </form>
+                                                <div class="d-flex p-2">
+                                                    <a href="{{ route('admin.update',$item->id)}}" title="Editar" class="btn btn-primary"> <i class="fas fa-edit"></i> </a>
+                                                    <form action="{{route('admin.delete',$item->id)}}" method="POST" style="display: inline" >
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button class="btn btn-danger" title="Excluir">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                    </form>
+                                                </div>
+                                             
                                             </td>
                                         </tr>
                                     @endforeach

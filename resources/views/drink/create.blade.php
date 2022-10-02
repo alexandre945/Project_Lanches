@@ -3,13 +3,13 @@
 @section('title', 'Cadastro Bebidas')
 
 @section('content_header')
-  <h1>Cadastrar Bebidas</h1>
+  <h1 class="text-center">Cadastrar Bebidas</h1>
 @stop
 
 @section('content')
   <div class="card card-info">
     <div class="card-header">
-      <h3 class="card-title">Cadastro de Bebidas</h3>
+      <h3 class="card-title pl-5">Cadastro de Bebidas</h3>
     </div>
 
     <form class="form-horizontal" action="{{route('drink.store')}}" method="POST" enctype="multipart/form-data">
@@ -25,27 +25,27 @@
                 @endif
 
                 </div>
-                <div class="form-group row">
+                <div class="form-group row p-2">
                     <label for="name" class="col-md-4 col-form-label text-md-right">Nome:</label>
                     <div class="col-md-6">
                         <input id="name" type="text" class="form-control" name="name">
                    
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row p-2">
                     <label for="description" class="col-md-4 col-form-label text-md-right">Descrição:</label>
                     <div class="col-md-6">
                         <textarea name="description" name="description"class="form-control" id="description" cols="30" rows="10" required autocomplete="description" autofocus></textarea>
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row p-2">
                     <label for="price" class="col-md-4 col-form-label text-md-right">Preço:</label>
                     <div class="col-md-6">
                         <input id="Meta" type="number" class="form-control" name="price">
 
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row p-2">
                     <label for="name" class="col-md-4 col-form-label text-md-right">Categoria:</label>
                     <div class="col-md-6">
                         <select name="categorie_id" id="">
@@ -60,7 +60,7 @@
 
 
                 <div class="form-group row mb-0">
-                    <div class="col-md-6 offset-md-4  ">
+                    <div class="col-md-6 offset-md-4  p-2">
                         <button type="submit" class="btn btn-primary float-right">
                             Salvar
                         </button>

@@ -133,14 +133,18 @@
                                             <img src="{{ asset('storage/'.$item->image) }}" style="width: 50px">
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.update',$item->id)}}" title="Editar" class="btn btn-primary"> <i class="fas fa-edit"></i> </a>
-                                            <form action="{{route('admin.delete',$item->id)}}" method="POST" style="display: inline" >
-                                            @method('DELETE')
-                                            @csrf
-                                            <button class="btn btn-danger" title="Excluir">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                            </form>
+                                            <div class="d-flex">
+                                                <a href="{{ route('admin.update',$item->id)}}" title="Editar" class="btn btn-primary"> <i class="fas fa-edit"></i> </a>
+                                                <form action="{{route('admin.delete',$item->id)}}" method="POST" style="display: inline" >
+                                                @method('DELETE')
+                                                @csrf
+                                                <button class="btn btn-danger" title="Excluir">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                                </form>
+
+                                            </div>
+                                      
                                         </td>
                                         </tr>
                                     @endforeach

@@ -126,8 +126,8 @@
                                         @foreach($product as $item)
                                             <tr>
                                             <th class="h6">{{ $item->id }}</th>
-                                            <th class="h6">{{ $item->name }}</th>
-                                            <th class="h6">{{ $item->description}}</th>
+                                            <th class="h6"><strong>{{ $item->name }}</strong></th>
+                                            <th style="font-size: 12px;">{{ $item->description}}</th>
                                             <th class="h6">{{ $item->price }}</th>
                                             <td>
                                                 <div class="d-flex">

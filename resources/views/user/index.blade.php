@@ -56,7 +56,7 @@
                         @endif
                         <div class="card-body">
                             @if (isset($product) && $product->isNotEmpty())
-                                <table class="table-reponsive table-bordered">
+                                <table class="table-responsive table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Name</th>

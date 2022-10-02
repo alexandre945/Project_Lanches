@@ -50,13 +50,13 @@
                             @if (isset($product) && $product->isNotEmpty())
                                 <table class=" table-reponsive table-bordered">
                                     <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Descrição</th>
-                                        <th>Preço</th>
-                                        <th>Imagem</th>
-                                        <th>Adicionar</th>
-                                    </tr>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Descrição</th>
+                                            <th>Preço</th>
+                                            <th>Imagem</th>
+                                            <th>Adicionar</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($product as $item)

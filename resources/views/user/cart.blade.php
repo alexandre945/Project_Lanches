@@ -10,22 +10,22 @@
 @section('content')
 <div class="container">
     @if(session('success'))
-    <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <p>{{session('success')}}</p>
-    </div>
-@endif
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <p>{{session('success')}}</p>
+        </div>
+    @endif
     <div class="row"> 
         <div class="card justify-contente-center m-5 p-5">
             <div class="text-center">
                 <h2> Produtos do seu Carrinho</h2>
-             <h6>Nome do usuario::{{$users}}</h6>
+             {{-- <h6>Seja Bem Vindo(a) . {{$users}}</h6> --}}
                 <h5>PEDIDO: {{$data->id}}</h5>
                 <h6>CRIADO EM: {{$data->created_at}}</h6>
+
             </div>
         </div>  
-   
-                    
+  
         <table class="table">
             <thead>
                 <tr>
@@ -59,11 +59,13 @@
                             </td>    
                             <td>{{$item->produtsIds->name}}</td> 
                             <td>R$-{{$item->produtsIds->price}}</td>
-                            <td></td>  
+                           <td>{{$item->produtsIds->count}}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+    
+ 
         <div class="btn-group btn-group-justified">
             <a href="{{route('user.index')}}"><button class="btn btn-success m-2">CONTINUAR COMPRANDO</button></a>
             <input type="text" name="total" value="" placeholder="TOTAL"
