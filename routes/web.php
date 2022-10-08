@@ -1,6 +1,9 @@
 <?php
 
-use App\Http\Controllers\ModelProductController;
+use App\Http\Controllers\ControllerCart;
+use App\Http\Controllers\ControllerProduct;
+use App\Http\Controllers\ControllerCombo;
+use App\Http\Controllers\ControllerDrink;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,34 +30,34 @@ require __DIR__.'/auth.php';
 //route admin
 
 
-Route::get('/admin/create',[ModelProductController::class,'create'])->name('admin.create');
-Route::post('/admin/store',[ModelProductController::class,'store'])->name('admin.store');
-Route::get('/admin',[ModelProductController::class,'index'])->name('admin.index');
-Route::delete('/admin/delete/{id}',[ModelProductController::class,'delete'])->name('admin.delete');
-Route::get('/admin/update/{id}',[ModelProductController::class, 'update'])->name('admin.update');
-Route::put('/admin/edit/{id}',[ModelProductController::class,'edit'])->name('admin.edit');
+Route::get('/admin/create',[ControllerProduct::class,'create'])->name('admin.create');
+Route::post('/admin/store',[ControllerProduct::class,'store'])->name('admin.store');
+Route::get('/admin',[ControllerProduct::class,'index'])->name('admin.index');
+Route::delete('/admin/delete/{id}',[ControllerProduct::class,'delete'])->name('admin.delete');
+Route::get('/admin/update/{id}',[ControllerProduct::class, 'update'])->name('admin.update');
+Route::put('/admin/edit/{id}',[ControllerProduct::class,'edit'])->name('admin.edit');
 
 //route user
 
-Route::get('/user/index',[ModelProductController::class,'show'])->name('user.index');
+Route::get('/user/index',[ControllerProduct::class,'show'])->name('user.index');
 
 //combos
 
-Route::get('/combo/create',[ModelProductController::class, 'comboCreate'])->name('combo.create');
-Route::post('/combo/store',[ModelProductController::class, 'comboStore'])->name('combo.store');
-Route::get('/combo/index',[ModelProductController::class, 'comboIndex'])->name('combo.index');
-Route::get('/comboIndex/show',[ModelProductController::class, 'comboshow'])->name('comboIndex.show');
+Route::get('/combo/create',[ControllerCombo::class, 'create'])->name('combo.create');
+Route::post('/combo/store',[ControllerCombo::class, 'store'])->name('combo.store');
+Route::get('/combo/index',[ControllerCombo::class, 'index'])->name('combo.index');
+Route::get('/comboIndex/show',[ControllerCombo::class, 'show'])->name('comboIndex.show');
 
 //route drink
 
-Route::get('/drink/create',[ModelProductController::class, 'drinkCreate'])->name('drink.create');
-Route::get('/drink/index' ,[ModelProductController::class, 'drinkIndex'])->name('drink.index');
-Route::post('/drink/store',[ModelProductController::class, 'drinkStore'])->name('drink.store');
-Route::get('/drink/show',[ModelProductController::class, 'drinkShow'])->name('drink.show');
+Route::get('/drink/create',[ControllerDrink::class, 'create'])->name('drink.create');
+Route::get('/drink/index' ,[ControllerDrink::class, 'index'])->name('drink.index');
+Route::post('/drink/store',[ControllerDrink::class, 'store'])->name('drink.store');
+Route::get('/drink/show',[ControllerDrink::class, 'show'])->name('drink.show');
 
 //cart
 
-Route::post('/cart/store/{id}',[ModelProductController::class, 'cartStore'])->name('cart.store');
-Route::get('/show/cart',[ModelProductController::class,'showCart'])->name('show.cart');
-Route::delete('/cart/delete/{id}',[ModelProductController::class, 'deleteCart'])->name('delete.cart');
+Route::post('/cart/store/{id}',[ControllerCart::class, 'store'])->name('cart.store');
+Route::get('/show/cart',[ControllerCart::class,'show'])->name('show.cart');
+Route::delete('/cart/delete/{id}',[ControllerCart::class, 'delete'])->name('delete.cart');
 
