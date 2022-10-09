@@ -4,6 +4,7 @@ use App\Http\Controllers\ControllerCart;
 use App\Http\Controllers\ControllerProduct;
 use App\Http\Controllers\ControllerCombo;
 use App\Http\Controllers\ControllerDrink;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,4 +61,7 @@ Route::get('/drink/show',[ControllerDrink::class, 'show'])->name('drink.show');
 Route::post('/cart/store/{id}',[ControllerCart::class, 'store'])->name('cart.store');
 Route::get('/show/cart',[ControllerCart::class,'show'])->name('show.cart');
 Route::delete('/cart/delete/{id}',[ControllerCart::class, 'delete'])->name('delete.cart');
+
+//adreesses
+Route::post('/adreesses/create',[UserController::class, 'store'])->name('adeesses.store');
 

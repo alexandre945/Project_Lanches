@@ -80,6 +80,55 @@
         </div>
     </div>
 </div>
+            <div class="container m-5 pr-5 d-flex justify-content-center">
+                <p>Antes de fechar seu pedido prencha formulario para entrega</p>
+            </div>
+
+        <div class="row ">
+            <div class="col-12 ">
+                <div class="card">
+                    @if(session('sucesses'))
+                    <div class="alert alert-success height-2">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <p>{{session('sucesses')}}</p>
+                    </div>
+                @endif
+                    <div class="card-body">
+                        <div class="container-fluid ">
+                            <div class="row col-12 d-flex justify-content-center">
+                                 
+                                    <form action="{{route('adeesses.store')}}" method="POST">
+                                        @csrf
+                                        <div class="form-group text-center">
+                                                <div class="form-group">
+                                                    <label>RUA</label>
+                                                    <input type="text" class="form-control" id="name" name="street" placeholder="Rua">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">NUMÉRO</label>
+                                                    <input type="nunber" class="form-control" id="nunber" name="nunber" placeholder="digite seu numéro">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>CIDADE</label>
+                                                    <input type="text" class="form-control" id="city" name="city" placeholder="Cidade">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>BAIRRO</label>
+                                                    <input type="text" class="form-control" id="district" name="district" placeholder="Bairro">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>CEP</label>
+                                                    <input type="text" class="form-control" id="zipcod" name="zipcode" placeholder="cep">
+                                                </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Enviar</button>
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 @stop
 @section('css')
