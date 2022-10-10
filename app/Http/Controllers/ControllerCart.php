@@ -89,18 +89,25 @@ class ControllerCart extends Controller
         //     $products = Demand_Product::find($id)->produtsIds->name;
         // $demand::with('productId')->get();
         // dd($demand);
-    
+           
+           $denandProdc = Demand_Product::count();
        
            
             if ($data) {
                 $demandProduct::findOrFail($id)->delete();
                 
             } 
+            if( $demandProduct::whereNull('demand_id')) {
+               $demand::where(['user_id' => Auth::user()->id])->delete();
+            } 
+            // else {
+            //     $demandProduct::findOrFail($id)->delete();
+            // }
             
-             else {
+            //  else {
           
-               $demandProduct::where([$demandProduct == null])->where(['user_id' => Auth::user()->id])->delete();
-            }
+            //    $demandProduct::where([$demandProduct == null])->where(['user_id' => Auth::user()->id])->delete();
+            // }
         
             return redirect()->route('show.cart', compact('demandProduct'))->with('success', 'Produto excluido com sucesso');
         }

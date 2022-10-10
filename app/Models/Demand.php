@@ -9,6 +9,8 @@ class Demand extends Model
 {
 protected $fillable = ['status', 'datedemand','user_id'];
 
+
+
   public function item_demands()
   {
     return $this->hasMany('ItenDemand');

@@ -88,15 +88,25 @@
             <div class="col-12 ">
                 <div class="card">
                     @if(session('sucesses'))
-                    <div class="alert alert-success height-2">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <p>{{session('sucesses')}}</p>
+                        <div class="alert alert-success height-2">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <p>{{session('sucesses')}}</p>
+                        </div>
+                    @endif
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                            <li>{{ $error}}</li>
+                            @endforeach
+                        </ul>
                     </div>
                 @endif
+
                     <div class="card-body">
                         <div class="container-fluid ">
                             <div class="row col-12 d-flex justify-content-center">
-                                 
                                     <form action="{{route('adeesses.store')}}" method="POST">
                                         @csrf
                                         <div class="form-group text-center">
