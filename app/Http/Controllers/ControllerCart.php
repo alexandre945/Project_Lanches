@@ -68,10 +68,7 @@ class ControllerCart extends Controller
                 'status' => 'RE',
                 'user_id' => Auth::user()->id,
             ])->with(['productId'])->first();
-    
-    
-    
-    
+
             return view('user.cart', compact('data', 'users'));
         }
     
@@ -85,21 +82,23 @@ class ControllerCart extends Controller
     
            
            
-            $data = Demand_Product::find($id)->produtsIds()->get();
+            // $data = Demand_Product::find($id)->produtsIds()->get();
+          
         //     $products = Demand_Product::find($id)->produtsIds->name;
         // $demand::with('productId')->get();
         // dd($demand);
            
-           $denandProdc = Demand_Product::count();
+        //    $denandProdc = Demand_Product::count();
        
-           
-            if ($data) {
-                $demandProduct::findOrFail($id)->delete();
-                
-            } 
-            if( $demandProduct::whereNull('demand_id')) {
-               $demand::where(['user_id' => Auth::user()->id])->delete();
-            } 
+        if ($demandProduct) {
+            $demandProduct::findOrFail($id)->delete();
+            
+        } 
+    //  if( $demandProduct::whereNotNull('demand_id')) {
+    //            $demand::where(['user_id' => Auth::user()->id])->delete();
+    //         } 
+
+        
             // else {
             //     $demandProduct::findOrFail($id)->delete();
             // }

@@ -27,44 +27,44 @@
             </div>
         </div>  
         @if (isset($data->productId) && $data->productId->isNotEmpty())
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Excluir</th>
-                    <th>Quantidade</th>
-                    <th>Produto</th>
-                    <th>Valor Unitario</th>
-                    <th>Sub-total</th>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Excluir</th>
+                            <th>Quantidade</th>
+                            <th>Produto</th>
+                            <th>Valor Unitario</th>
+                            <th>Sub-total</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
                     
-                </tr>
-            </thead>
-            <tbody>
-             
-                @foreach($data->productId as $item)
-                    <tr>
-                            <td>
-                                <form action="{{route('delete.cart',$item->id)}}" method="POST" style="display: inline" >
-                                    @method('DELETE')
-                                    @csrf
-                                        <button class="btn btn-danger" title="Excluir">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                </form>
-                            </td>
-                            <td class= 'justify-contente-center'>
-                                <div class="justify-contente-center">
-                                    <a href="#"><i class="fa fa-circle">-</i></a>
-                                    <span>{{$item->quanty}}</span>
-                                    <a href="#"><i class="fas fa-circle">+</i></a>
-                                </div>
-                            </td>    
-                            <td>{{$item->produtsIds->name}}</td> 
-                            <td>R$_{{$item->produtsIds->price}}</td>
-                           <td>{{$item->produtsIds->id}}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+                        @foreach($data->productId as $item)
+                            <tr>
+                                    <td>
+                                        <form action="{{route('delete.cart',$item->id)}}" method="POST" style="display: inline" >
+                                            @method('DELETE')
+                                            @csrf
+                                                <button class="btn btn-danger" title="Excluir">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                        </form>
+                                    </td>
+                                    <td class= 'justify-contente-center'>
+                                        <div class="justify-contente-center">
+                                            <a href="#"><i class="fa fa-circle">-</i></a>
+                                            <span>{{$item->quanty}}</span>
+                                            <a href="#"><i class="fas fa-circle">+</i></a>
+                                        </div>
+                                    </td>    
+                                    <td>{{$item->produtsIds->name}}</td> 
+                                    <td>R$_{{$item->produtsIds->price}}</td>
+                                <td>{{$item->produtsIds->id}}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             @else
                 <div>
                     <h5>Seu Carrinho está vazio</h5>

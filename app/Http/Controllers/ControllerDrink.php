@@ -26,7 +26,7 @@ class ControllerDrink extends Controller
         return view('drink.create', compact('categories'));
     }
 
-    public function drinkStore(Request $request)
+    public function store(Request $request)
     {
         $product = Product::create([
             'name' => $request['name'],

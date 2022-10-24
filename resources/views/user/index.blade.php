@@ -70,7 +70,7 @@
                                             @foreach($product as $item)
                                                 <tr>
                                                     <th>{{ $item->name }}</th>
-                                                    <th style="font-size:12px;">{{ $item->description}}</th>
+                                                    <th p-2 style="font-size:12px;"><button id='button'>Ver detahes</button><dialog><button id=diag>x</button>{{ $item->description}}</dialog></th>
                                                     <th>{{ $item->price }}</th>
                                                     <td>
                                                         <img src="{{ asset('storage/'.$item->image) }}" style="width: 60px">
@@ -123,6 +123,22 @@
 @stop
 
 @section('js')
+<script>
+const buttondiagog = document.getElementById("button");
+const modal = document.querySelector("dialog");
+const button = document.getElementById("diag")
+
+buttondiagog.onclick = function() {
+   
+    modal.showModal()
+    console.log('modal')
+}
+
+button.onclick = function(){
+    modal.close()
+}
+
+</script>
 @stop
 
 
