@@ -117,6 +117,21 @@
             border-radius: 8px;
             border:solid 2px black;
         }
+        dialog::backdrop {
+            background-color: rgb(0 0 0 / .3);
+        }
+        dialog {
+            border: name;
+            border-radius: .5rem;
+            box-shadow: 0 0 1rem rgb(0 0 0 / .3);
+        }
+        #button {
+            border-radius: 8px;
+            background-color: rgb(0 0 0 / .2);
+        }
+        #diag {
+            border:none;
+        }
 
 
 </style>
@@ -131,7 +146,7 @@ const button = document.getElementById("diag")
 buttondiagog.onclick = function() {
    
     modal.showModal()
-    console.log('modal')
+    console.log(modal)
 }
 
 button.onclick = function(){

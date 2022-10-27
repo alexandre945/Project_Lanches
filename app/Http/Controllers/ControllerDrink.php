@@ -42,7 +42,7 @@ class ControllerDrink extends Controller
     {
         $product =  new Product;
 
-        $product = $product::where('categorie_id', 3)->get();
+        $product = $product::orderBy('name', 'asc')->where('categorie_id', 3)->get();
 
 
         return view('drink.index', compact('product'));
@@ -51,7 +51,7 @@ class ControllerDrink extends Controller
     public function show(Request $request)
     {
         $product =  new Product;
-        $product = $product::where('categorie_id', 3)->get();
+        $product = $product::orderBy('name', 'asc')->where('categorie_id', 3)->get();
 
         return view('user.show', compact('product'));
     }
