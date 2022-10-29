@@ -122,8 +122,10 @@
         }
         dialog {
             border: name;
-            border-radius: .5rem;
+            border-radius: .5rem ;
             box-shadow: 0 0 1rem rgb(0 0 0 / .3);
+            height: 150px;
+            border: solid 3px blue;
         }
         #button {
             border-radius: 8px;
