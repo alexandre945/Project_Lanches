@@ -70,7 +70,36 @@
                                             @foreach($product as $item)
                                                 <tr>
                                                     <th>{{ $item->name }}</th>
-                                                    <th p-2 style="font-size:12px;"><button id='button'>Ver detahes</button><dialog><button id=diag>x</button>{{ $item->description}}</dialog></th>
+                                                    <th p-2 style="font-size:12px;">
+                                                        {{-- <button class="btn btn-primary " id='button'>Ver detahes</button>
+                                                        <dialog><button id=diag>x</button>{{ $item->description}}</dialog> --}}
+
+                                                        <button type="button"class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$item->id}}">
+                                                           DETALHES
+                                                          </button>
+                                                          
+                                                          <!-- Modal -->
+                                                          <div class="modal fade"id="exampleModal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                              <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                  <h5 class="modal-title" id="exampleModalLabel">Ingredientes</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    {{-- <span aria-hidden="true">&times;</span> --}}
+                                                                  </button>
+                                                                </div>
+                                                                    <div class="modal-body">
+                                                                           <h4 class="text-center">{{$item->name}}</h4>
+                                                                           {{$item->description}}
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                                                    </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+
+                                                    </th>
                                                     <th>{{ $item->price }}</th>
                                                     <td>
                                                         <img src="{{ asset('storage/'.$item->image) }}" style="width: 60px">
@@ -127,10 +156,7 @@
             height: 150px;
             border: solid 3px blue;
         }
-        #button {
-            border-radius: 8px;
-            background-color: rgb(0 0 0 / .2);
-        }
+    
         #diag {
             border:none;
         }
@@ -141,19 +167,19 @@
 
 @section('js')
 <script>
-const buttondiagog = document.getElementById("button");
-const modal = document.querySelector("dialog");
-const button = document.getElementById("diag")
+// const buttondiagog = document.getElementById("button");
+// const modal = document.querySelector("dialog");
+// const button = document.getElementById("diag")
 
-buttondiagog.onclick = function() {
+// buttondiagog.onclick = function() {
    
-    modal.showModal()
-    console.log(modal)
-}
+//     modal.showModal()
+//     console.log(modal)
+// }
 
-button.onclick = function(){
-    modal.close()
-}
+// button.onclick = function(){
+//     modal.close()
+// }
 
 </script>
 @stop
