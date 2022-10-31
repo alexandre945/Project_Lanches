@@ -56,24 +56,21 @@
                         @endif
                         <div class="card-body">
                             @if (isset($product) && $product->isNotEmpty())
-                                <table class="table-responsive table-bordered">
+                                <table class="table-responsive table-bordered table-sm">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Descrição</th>
-                                            <th>Preço</th>
-                                            <th>Imagem</th>
-                                            <th>Adicionar</th>
+                                            <th  class="p-2">Name</th>
+                                            <th  class="p-2">Descrição</th>
+                                            <th  class="p-2">Preço</th>
+                                            <th  class="p-2">Imagem</th>
+                                            <th  class="p-2">Adicionar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                             @foreach($product as $item)
                                                 <tr>
-                                                    <th>{{ $item->name }}</th>
-                                                    <th p-2 style="font-size:12px;">
-                                                        {{-- <button class="btn btn-primary " id='button'>Ver detahes</button>
-                                                        <dialog><button id=diag>x</button>{{ $item->description}}</dialog> --}}
-
+                                                    <th  class="p-2">{{ $item->name }}</th>
+                                                    <th  class="p-2"style="font-size:12px;">
                                                         <button type="button"class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$item->id}}">
                                                            DETALHES
                                                           </button>
@@ -99,12 +96,12 @@
                                                             </div>
                                                           </div>
 
-                                                    </th>
-                                                    <th>{{ $item->price }}</th>
-                                                    <td>
+                                                    </th  class="p-2">
+                                                    <th  class="p-2">{{ $item->price }}</th>
+                                                    <td  class="p-2">
                                                         <img src="{{ asset('storage/'.$item->image) }}" style="width: 60px">
                                                     </td>
-                                                    <td>
+                                                    <td  class="p-2">
                                                         <form action="{{route('cart.store',$item->id)}}" method="POST" style="display: inline" >
                                                             @method('Post')
                                                             @csrf

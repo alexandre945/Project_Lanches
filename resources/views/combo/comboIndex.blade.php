@@ -21,8 +21,9 @@
             <div class="row">
                 <div class="col-12 col">
                     <div class="card card-info">
+                 
                         <div class="card-header ">
-                            <a href="{{route('user.index')}}" class="text-center ml-5">LANCHES</a>
+                            <a href="{{route('user.index')}}" class="text-center">LANCHES</a>
                             <a href="{{route('comboIndex.show')}}" class="m-3">COMBOS</a>
                             <a href="{{route('drink.show')}}" class="m-3">BEBIDAS</a>
                             <a href="{{route('show.cart')}}"class="float-right" title="Ver suas Compras"><i class="fas fa-shopping-cart"></i></a>
@@ -48,30 +49,57 @@
                         @endif
                         <div class="card-body">
                             @if (isset($product) && $product->isNotEmpty())
-                                <table class=" table-reponsive table-bordered">
+                                <table  class="table-responsive table-bordered table-sm">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Descrição</th>
-                                            <th>Preço</th>
-                                            <th>Imagem</th>
-                                            <th>Adicionar</th>
+                                            <th class="p-2">Name</th>
+                                            <th class="p-2">Descrição</th>
+                                            <th class="p-2">Preço</th>
+                                            <th class="p-2">Imagem</th>
+                                            <th class="p-2">Adicionar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($product as $item)
                                         <tr>
-                                            <th>{{ $item->name }}</th>
-                                            <th style="font-size:12px;">{{ $item->description}}</th>
-                                            <th>{{ $item->price }}</th>
-                                            <td>
+                                            <th class="p-2">{{ $item->name }}</th>
+                                            <th class="p-2">
+
+                                                <button type="button"class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$item->id}}">
+                                                    DETALHES
+                                                   </button>
+                                                   
+                                                   <!-- Modal -->
+                                                   <div class="modal fade"id="exampleModal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                     <div class="modal-dialog" role="document">
+                                                       <div class="modal-content">
+                                                         <div class="modal-header">
+                                                           <h5 class="modal-title" id="exampleModalLabel">Ingredientes</h5>
+                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                             {{-- <span aria-hidden="true">&times;</span> --}}
+                                                           </button>
+                                                         </div>
+                                                             <div class="modal-body">
+                                                                    <h4 class="text-center">{{$item->name}}</h4>
+                                                                    {{$item->description}}
+                                                             </div>
+                                                             <div class="modal-footer">
+                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                                             </div>
+                                                       </div>
+                                                     </div>
+                                                   </div>
+
+                                            </th>
+                                            <th class="p-2">{{ $item->price }}</th>
+                                            <td class="p-2">
                                                 <img src="{{ asset('storage/'.$item->image) }}" style="width: 60px">
                                             </td>
-                                            <td>
+                                            <td class="p-2">
                                                 <form action="{{route('cart.store',$item->id)}}" method="POST" style="display: inline" >
                                                 @method('Post')
                                                 @csrf
-                                                <button style="width:85px;" class="btn btn-primary" title="Adicionar">
+                                                <button class="btn btn-primary" title="Adicionar ao carrinho">
                                                     <i class="fas fa-shopping-cart">Adicionar</i>
                                                 </button>
                                                 </form>

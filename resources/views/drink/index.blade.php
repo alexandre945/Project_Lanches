@@ -116,7 +116,7 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
+                                        <th class="p-2">Name</th>
                                         <th>Descrição</th>
                                         <th>Preço</th>
                                         <th>Ação</th>
