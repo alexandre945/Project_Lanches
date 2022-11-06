@@ -22,8 +22,8 @@ class ControllerProduct extends Controller
 
     public function index()
     {
-        $product =  new Product;
-        $product = $product::where('categorie_id', 1)->sortBy("name")->get();
+        $product = Product::where('categorie_id', 1)->get();
+         
 
 
         return view('admin.index', compact('product'));

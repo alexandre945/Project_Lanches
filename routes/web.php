@@ -5,6 +5,7 @@ use App\Http\Controllers\ControllerProduct;
 use App\Http\Controllers\ControllerCombo;
 use App\Http\Controllers\ControllerDrink;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,4 +65,8 @@ Route::delete('/cart/delete/{id}',[ControllerCart::class, 'delete'])->name('dele
 
 //adreesses
 Route::post('/adreesses/create',[UserController::class, 'store'])->name('adeesses.store');
+
+// adimin pedidos
+
+Route::get('/adimin/index',[AdminController::class, 'index'])->name('admin.demand');
 

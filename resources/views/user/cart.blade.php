@@ -15,18 +15,39 @@
             <p>{{session('success')}}</p>
         </div>
     @endif
+    @if (isset($data->productId) &&  $data!= null && $data->productId->isNotEmpty()) 
     <div class="row"> 
         <div class="card justify-contente-center m-5 p-5">
             <div class="text-center">
                 <h2> Produtos do seu Carrinho</h2>
              <h6>Seja Bem Vindo Sr.(a) . {{$users}}</h6>
+             {{-- <div class="justify-contente-center">
+                <div class="form-check">
+                    <input type="radio" class="form-check-input"  checked>reservado
+                    <label class="form-check-label" for="radio1"></label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" disabled> Pago
+                    <label class="form-check-label" for="radio2"></label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" disabled>Em Produção
+                    <label class="form-check-label"></label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" disabled>Fechado
+                    <label class="form-check-label"></label>
+                  </div>
+
+             </div>
+          --}}
              <h6>Estatus:{{$data->status}}</h6>
                 <h5>PEDIDO: {{$data->id}}</h5>
                 <h6>CRIADO EM: {{$data->created_at}}</h6>
 
             </div>
         </div>  
-        @if (isset($data->productId) && $data->productId->isNotEmpty())
+       
                 <table class="table">
                     <thead>
                         <tr>
@@ -66,7 +87,7 @@
                     </tbody>
                 </table>
             @else
-                <div>
+                <div class="alert alert-warning">
                     <h5>Seu Carrinho está vazio</h5>
                 </div>
             @endif
@@ -98,7 +119,7 @@
                     <div class="alert alert-danger">
                         <ul>
                             @foreach($errors->all() as $error)
-                            <li>{{ $error}}</li>
+                                <li>{{ $error}}</li>
                             @endforeach
                         </ul>
                     </div>
@@ -111,21 +132,28 @@
                                         @csrf
                                         <div class="form-group text-center">
                                                 <div class="form-group">
-                                                    <label>RUA</label>
-                                                    <input type="text" class="form-control" id="name" name="street" placeholder="Rua">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">NUMÉRO</label>
-                                                    <input type="nunber" class="form-control" id="nunber" name="nunber" placeholder="digite seu numéro">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>CIDADE</label>
-                                                    <input type="text" class="form-control" id="city" name="city" placeholder="Cidade">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>BAIRRO</label>
-                                                    <input type="text" class="form-control" id="district" name="district" placeholder="Bairro">
-                                                </div>
+                                                
+                                                    <div class="form-group">
+                                                        <label>CIDADE</label>
+                                                        <input type="text" class="form-control" id="city" name="city" placeholder="Cidade">
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label>BAIRRO</label>
+                                                        <input type="text" class="form-control" id="district" name="district" placeholder="Bairro">
+                                                    </div>
+
+                                                        <label>RUA</label>
+                                                        <input type="text" class="form-control" id="name" name="street" placeholder="Rua">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">NUMÉRO</label>
+                                                        <input type="nunber" class="form-control" id="nunber" name="nunber" placeholder="digite seu numéro">
+                                                    </div>
+                                           
+                                           
+                                           
                                                 <div class="form-group">
                                                     <label>CEP</label>
                                                     <input type="text" class="form-control" id="zipcod" name="zipcode" placeholder="cep">

@@ -340,6 +340,13 @@ return [
         ],
 
         [
+            'text' => 'Lista de pedidos',
+            'url'  => 'adimin/index',
+            'icon' => 'fas fa-fw fa-list',
+            'can'  => ['admin'],
+        ],
+
+        [
             'text' => 'Cardapio de Lanches',
             'url'  => 'user/index',
             'icon' => 'fas fa-fw fa-user',

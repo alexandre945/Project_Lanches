@@ -28,13 +28,14 @@ class ControllerCart extends Controller
             $demand = Demand::where([
                 'status' => 'RE',
                 'user_id' => Auth::user()->id,
-            ])->with('productId')->first();
+            ])->whereDate('created_at', '=', date('Y-m-d'))
+            ->with('productId')->first();
     
             if (!$demand) {
                 $demand = Demand::create([
                     'status' => 'RE',
                     'user_id' => $user,
-                    'datedemand' => '2022_09_17'
+                    'datedemand' => date('d-m-y'),
                 ]);
             }
     
@@ -52,7 +53,8 @@ class ControllerCart extends Controller
                     ]);
                 } else {
                     $product_demand->update([
-                        'quanty' => 2,
+                        'quanty' => $product_demand->quanty+1,
+                        
                     ]);
                 }
             }
@@ -67,7 +69,8 @@ class ControllerCart extends Controller
             $data = Demand::where([
                 'status' => 'RE',
                 'user_id' => Auth::user()->id,
-            ])->with(['productId'])->first();
+            ])->whereDate('created_at', '=', date('Y-m-d'))
+            ->with(['productId'])->first();
 
             return view('user.cart', compact('data', 'users'));
         }
@@ -81,7 +84,31 @@ class ControllerCart extends Controller
             $demand = New Demand;
     
            
-           
+ 
+        
+               $demand = $demand::where(['user_id' => Auth::user()->id])
+               ->whereDate('created_at', '=', date('Y-m-d'))
+               ->with(['productId'])->first();
+               if($demand->productId->count() <= 0 ){
+                $demand->delete();
+            }
+                
+                $demandProduct::findOrFail($id)->delete();
+            
+
+              
+            
+
+        
+  
+        
+            return redirect()->route('show.cart', compact('demandProduct'))->with('success', 'Produto excluido com sucesso');
+        }
+
+}
+
+
+          
             // $data = Demand_Product::find($id)->produtsIds()->get();
           
         //     $products = Demand_Product::find($id)->produtsIds->name;
@@ -90,16 +117,12 @@ class ControllerCart extends Controller
            
         //    $denandProdc = Demand_Product::count();
        
-        if ($demandProduct) {
-            $demandProduct::findOrFail($id)->delete();
+        // if ($demandProduct) {
+        //     $demandProduct::findOrFail($id)->delete();
             
-        } 
-    //  if( $demandProduct::whereNotNull('demand_id')) {
-    //            $demand::where(['user_id' => Auth::user()->id])->delete();
-    //         } 
+        // } 
 
-        
-            // else {
+                  // else {
             //     $demandProduct::findOrFail($id)->delete();
             // }
             
@@ -107,8 +130,3 @@ class ControllerCart extends Controller
           
             //    $demandProduct::where([$demandProduct == null])->where(['user_id' => Auth::user()->id])->delete();
             // }
-        
-            return redirect()->route('show.cart', compact('demandProduct'))->with('success', 'Produto excluido com sucesso');
-        }
-
-}
