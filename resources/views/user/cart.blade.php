@@ -21,33 +21,12 @@
             <div class="text-center">
                 <h2> Produtos do seu Carrinho</h2>
              <h6>Seja Bem Vindo Sr.(a) . {{$users}}</h6>
-             {{-- <div class="justify-contente-center">
-                <div class="form-check">
-                    <input type="radio" class="form-check-input"  checked>reservado
-                    <label class="form-check-label" for="radio1"></label>
-                  </div>
-                  <div class="form-check">
-                    <input type="radio" class="form-check-input" disabled> Pago
-                    <label class="form-check-label" for="radio2"></label>
-                  </div>
-                  <div class="form-check">
-                    <input type="radio" class="form-check-input" disabled>Em Produção
-                    <label class="form-check-label"></label>
-                  </div>
-                  <div class="form-check">
-                    <input type="radio" class="form-check-input" disabled>Fechado
-                    <label class="form-check-label"></label>
-                  </div>
-
-             </div>
-          --}}
              <h6>Estatus:{{$data->status}}</h6>
                 <h5>PEDIDO: {{$data->id}}</h5>
                 <h6>CRIADO EM: {{$data->created_at}}</h6>
 
             </div>
         </div>  
-       
                 <table class="table">
                     <thead>
                         <tr>
@@ -56,7 +35,6 @@
                             <th>Produto</th>
                             <th>Valor Unitario</th>
                             <th>Sub-total</th>
-                            
                         </tr>
                     </thead>
                     <tbody>

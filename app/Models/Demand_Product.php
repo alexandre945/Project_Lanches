@@ -11,7 +11,7 @@ class Demand_Product extends Model
 
     public function demadIds()
        {
-        return $this->belongsTo(Demand::class);
+        return $this->belongsTo(Demand::class, 'demand_id');
        }  
        
        public function produtsIds()
