@@ -25,18 +25,9 @@ class AdminController extends Controller
      
     // $data = Demand::with(['productId'])->get();
 
-    $data = Demand::where([
+    $data = Demand::orderBy('id','desc')->where([
         'status' => 'RE',
     ])->whereDate('created_at', '=', date('Y-m-d'))->with(['demanduser'])->get();
-   
-  
-  
-//    $data = New Demand;
-
-//    $data::where('status', 'RE')->get();
-
-  
-  
 
 
 

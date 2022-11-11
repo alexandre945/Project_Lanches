@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><strong>Escolha seus Lanches aqui:</strong></h1>
+                <h1><strong><i>Escolha seus Lanches aqui</i></strong></h1>
             </div>
       
         </div>
@@ -22,9 +22,9 @@
                 <div class="col-12 col">
                     <div class="card card-info">
                         <div class="card-header ">
-                            <a href="{{route('user.index')}}" class="text-center">LANCHES</a>
-                            <a href="{{route('comboIndex.show')}}" class="m-3">COMBOS</a>
-                            <a href="{{route('drink.show')}}" class="m-3">BEBIDAS</a>
+                            <a href="{{route('user.index')}}" class="text-center"><i>LANCHES</i></a>
+                            <a href="{{route('comboIndex.show')}}" class="m-3"><i>COMBOS</i></a>
+                            <a href="{{route('drink.show')}}" class="m-3"><i>BEBIDAS</i></a>
                             <a href="{{route('show.cart')}}"class="float-right" title="Ver suas Compras"><i class="fas fa-shopping-cart"></i></a>
                           
                         </div>
@@ -59,17 +59,17 @@
                                 <table class="table-responsive table-bordered table-sm">
                                     <thead>
                                         <tr>
-                                            <th  class="p-2">Name</th>
-                                            <th  class="p-2">Descrição</th>
-                                            <th  class="p-2">Preço</th>
-                                            <th  class="p-2">Imagem</th>
-                                            <th  class="p-2">Adicionar</th>
+                                            <th  class="p-2"><i>Name</i></th>
+                                            <th  class="p-2"><i>Descrição</i></th>
+                                            <th  class="p-2"><i>Preço</i></th>
+                                            <th  class="p-2"><i>Imagem</i></th>
+                                            <th  class="p-2"><i>Adicionar</i></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                             @foreach($product as $item)
                                                 <tr>
-                                                    <th  class="p-2">{{ $item->name }}</th>
+                                                    <th  class="p-2"><i>{{ $item->name }}</i></th>
                                                     <th  class="p-2"style="font-size:12px;">
                                                         <button type="button"class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$item->id}}">
                                                            DETALHES

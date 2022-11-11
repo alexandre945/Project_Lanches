@@ -19,7 +19,7 @@
     <div class="row"> 
         <div class="card justify-contente-center m-5 p-5">
             <div class="text-center">
-                <h2> Produtos do seu Carrinho</h2>
+            <i><h2> Produtos do seu Carrinho</h2></i>
              <h6>Seja Bem Vindo Sr.(a) . {{$users}}</h6>
              <h6>Estatus:{{$data->status}}</h6>
                 <h5>PEDIDO: {{$data->id}}</h5>
@@ -30,14 +30,17 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Excluir</th>
-                            <th>Quantidade</th>
-                            <th>Produto</th>
-                            <th>Valor Unitario</th>
-                            <th>Sub-total</th>
+                            <th><i>Excluir</i></th>
+                            <th><i>Quantidade</i></th>
+                            <th><i>Produto</i></th>
+                            <th><i>Valor Unitario</i></th>
+                            <th><i>Sub-total</i></th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $total= 0;
+                        @endphp
                     
                         @foreach($data->productId as $item)
                             <tr>
@@ -56,10 +59,13 @@
                                             <span>{{$item->quanty}}</span>
                                             <a href="#"><i class="fas fa-circle">+</i></a>
                                         </div>
-                                    </td>    
+                                    </td> 
+                                        @php
+                                        $total += $item->produtsIds->price * $item->quanty;
+                                        @endphp   
                                     <td>{{$item->produtsIds->name}}</td> 
                                     <td>R$_{{$item->produtsIds->price}}</td>
-                                <td>{{$item->produtsIds->id}}</td>
+                                    <td>{{$item->produtsIds->price * $item->quanty}}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -72,9 +78,12 @@
  
         <div class="btn-group btn-group-justified">
             <a href="{{route('user.index')}}"><button class="btn btn-success m-2">CONTINUAR COMPRANDO</button></a>
-            <input type="text" name="total" value="" placeholder="TOTAL"
-              style="width:120px; height:60px;" 
-            disabled class="text-center  border border-success rounded mt-2">
+               <div class="">
+                <p class="text-center mb-0">TOTAL</p>
+                <input type="text" name="total" value="{{$total}}" placeholder="TOTAL"
+                  style="width:120px; height:60px;" 
+                disabled class="text-center  border border-success rounded ">
+               </div>
             <a href="#"><button class="btn btn-success m-2">FECHAR PEDIDO</button></a>
         </div>
     </div>

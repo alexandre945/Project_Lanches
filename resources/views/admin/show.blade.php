@@ -17,7 +17,7 @@
     @endif
     @forelse ($data as $data)
     <div class="row"> 
-        <div class="card justify-contente-center m-5 p-5">
+        <div class="card justify-contente-center m-2 p-5">
             <div class="text-center">
                 {{date('d-m-y H:i:s')}}
                 <h2> Pedidos Realizados</h2>
@@ -61,40 +61,43 @@
                         @endforeach
                     </tbody>
                 </table>
-
-                <div class="card-body">
-                    <div class="container-fluid ">
-                        <div class="row col-12 d-flex justify-content-center">
-                                    <div class="form-group text-center">
-                                        <div class="form-group">
-                                            <label>CIDADE</label>
-                                            <input type="text" class="form-control" id="city" value= "{{$data->demanduser->address->city ?? ''}}" name="city" placeholder="Cidade">
-                                        </div> 
-                                        
-                                        <div class="form-group">
-                                            <label>BAIRRO</label>
-                                            <input type="text" class="form-control" id="district" value= "{{$data->demanduser->address->district ?? ''}}" name="district" placeholder="Bairro">
+                    <div class="card-body">
+                        <div class="container-fluid ">
+                            <div class="row col-12 d-flex justify-content-center">
+                                <div class="container m-1 pr-5 d-flex justify-content-center">
+                                    <p><i>Endereço fornecido para entrega</i></p>
+                                </div>
+                                        <div class="form-group text-center">
+                                            <div class="form-group">
+                                                <label>CIDADE</label>
+                                                <input type="text" class="form-control" id="city" value= "{{$data->demanduser->address->city ?? ''}}" name="city" placeholder="Cidade">
+                                            </div> 
+                                            
+                                            <div class="form-group">
+                                                <label>BAIRRO</label>
+                                                <input type="text" class="form-control" id="district" value= "{{$data->demanduser->address->district ?? ''}}" name="district" placeholder="Bairro">
+                                            </div>
+    
+                                            <div class="form-group">
+                                                <label>RUA</label>
+                                                <input type="text" class="form-control" id="name" value= "{{$data->demanduser->address->street ?? ''}}" name="street" placeholder="Rua">
+                                            </div>
+    
+                                            <div class="form-group">
+                                                <label>NUMÉRO</label>
+                                                <input type="nunber" class="form-control" id="nunber" value= "{{$data->demanduser->address->nunber ?? ''}}" name="nunber" placeholder="digite seu numéro">
+                                            </div>
+                                             
+                                             
+                                            <div class="form-group">
+                                                <label>CEP</label>
+                                                <input type="text" class="form-control" id="zipcod" value= "{{$data->demanduser->address->zipcode ?? ''}}"name="zipcode" placeholder="cep">
+                                            </div>
                                         </div>
-
-                                        <div class="form-group">
-                                            <label>RUA</label>
-                                            <input type="text" class="form-control" id="name" value= "{{$data->demanduser->address->street ?? ''}}" name="street" placeholder="Rua">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>NUMÉRO</label>
-                                            <input type="nunber" class="form-control" id="nunber" value= "{{$data->demanduser->address->nunber ?? ''}}" name="nunber" placeholder="digite seu numéro">
-                                        </div>
-                                         
-                                         
-                                        <div class="form-group">
-                                            <label>CEP</label>
-                                            <input type="text" class="form-control" id="zipcod" value= "{{$data->demanduser->address->zipcode ?? ''}}"name="zipcode" placeholder="cep">
-                                        </div>
-                                    </div>
+                            </div>
+                            <hr class="bg-green" style="height:5px;">
                         </div>
-                    </div>
-                </div>   
+                    </div>   
     </div>
     @empty
     <div class="alert alert-warning">
@@ -102,10 +105,6 @@
     </div>
     @endforelse
 </div>
-            <div class="container m-5 pr-5 d-flex justify-content-center">
-                <p>Endereço fornecido para entrega</p>
-            </div>
-
         <div class="row ">
             <div class="col-12 ">
                 <div class="card">
@@ -137,4 +136,19 @@
 @endsection
 
 @section('js')
+{{-- <script>
+     const buttondiagog = document.getElementById("button");
+ const modal = document.querySelector("dialog");
+ const button = document.getElementById("diag")
+
+ buttondiagog.onclick = function() {
+   
+    modal.showModal()
+     console.log(modal)
+ }
+
+ button.onclick = function(){
+     modal.close()
+ }
+</script> --}}
 @stop
