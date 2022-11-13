@@ -6,6 +6,7 @@ use App\Http\Controllers\ControllerCombo;
 use App\Http\Controllers\ControllerDrink;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CloseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -69,4 +70,9 @@ Route::post('/adreesses/create',[UserController::class, 'store'])->name('adeesse
 // adimin pedidos
 
 Route::get('/adimin/index',[AdminController::class, 'index'])->name('admin.demand');
+
+//close pedidos
+
+Route::get('/close',[CloseController::class, 'index'])->name('close.index');
+Route::post('/close/update/{id}',[CloseController::class, 'update'])->name('close.update');
 

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Carrinho')
+@section('title', 'Cart')
 
 @section('content_header')
 
@@ -34,36 +34,40 @@
                             <th>Produto</th>
                             <th>Valor Unitario</th>
                             <th>Sub-total</th>
-                            <th>Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         @php 
                          $total = 0;
+                    
                         @endphp
                         @foreach($data->productId as $item)
                             <tr>
-                                    <td class= 'justify-contente-center'>
-                                        <div class="justify-contente-center">
-                                            <a href="#"><i class="fa fa-circle">-</i></a>
-                                            <span>{{$item->quanty}}</span>
-                                            <a href="#"><i class="fas fa-circle">+</i></a>
-                                        </div>
+                                    <td>
+                                        <span>{{$item->quanty}}</span>
                                     </td>    
                                     <td>{{$item->produtsIds->name}}</td> 
                                     <td>R$_{{$item->produtsIds->price}}</td>
-                                    <td>{{$item->produtsIds->price * $item->quanty}}</td>
+                                    <td>R$_{{ number_format($item->produtsIds->price * $item->quanty,2,',','.')}}</td>
                                 @php 
                                 $total += $item->produtsIds->price * $item->quanty;
                                 @endphp
-                                <td>{{$total}}</td>
+                            
                             </tr>
+                     
                         @endforeach
                     </tbody>
                 </table>
+           
                     <div class="card-body">
                         <div class="container-fluid ">
                             <div class="row col-12 d-flex justify-content-center">
+                                <div class="m-2">
+                                    <p class="text-center mb-0">TOTAL</p>
+                                    <input type="text" name="total" value="R${{$total ?? ''}}" placeholder="TOTAL"
+                                    style="width:120px; height:60px;" 
+                                    disabled class="text-center  border border-success rounded ">
+                               </div>
                                 <div class="container m-1 pr-5 d-flex justify-content-center">
                                     <p><i>Endereço fornecido para entrega</i></p>
                                 </div>
@@ -90,8 +94,8 @@
                                              
                                              
                                             <div class="form-group">
-                                                <label>CEP</label>
-                                                <input type="text" class="form-control" id="zipcod" value= "{{$data->demanduser->address->zipcode ?? ''}}"name="zipcode" placeholder="cep">
+                                                <label>CEL</label>
+                                                <input type="tel" class="form-control" id="zipcod" value= "{{$data->demanduser->address->zipcode ?? ''}}"name="zipcode" placeholder="telefone">
                                             </div>
                                         </div>
                             </div>
@@ -101,7 +105,7 @@
     </div>
     @empty
     <div class="alert alert-warning">
-        <h5>Não há Pedidos </h5>
+        <h5>Não há Pedidos Para esta data</h5>
     </div>
     @endforelse
 </div>
