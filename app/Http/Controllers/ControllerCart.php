@@ -82,10 +82,7 @@ class ControllerCart extends Controller
             $product = Product::find($id);
             $demandProduct =  new Demand_Product;
             $demand = New Demand;
-    
-           
- 
-        
+            
                $demand = $demand::where(['user_id' => Auth::user()->id])
                ->whereDate('created_at', '=', date('Y-m-d'))
                ->with(['productId'])->first();
@@ -94,13 +91,6 @@ class ControllerCart extends Controller
             }
                 
                 $demandProduct::findOrFail($id)->delete();
-            
-
-              
-            
-
-        
-  
         
             return redirect()->route('show.cart', compact('demandProduct'))->with('success', 'Produto excluido com sucesso');
         }

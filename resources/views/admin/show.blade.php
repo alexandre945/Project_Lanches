@@ -17,7 +17,7 @@
     @endif
     @forelse ($data as $data)
     <div class="row"> 
-        <div class="card justify-contente-center m-2 p-5">
+        <div class="card justify-contente-center m-2  p-5 col-md-12 ">
             <div class="text-center">
                 {{date('d-m-y H:i:s')}}
                 <h2> Pedidos Realizados</h2>
@@ -27,10 +27,10 @@
                 <h6>CRIADO EM: {{$data->created_at}}</h6>
             </div>
         </div>  
-                <table class="table">
+                <table class="table col-md-12 col-sm-4">
                     <thead>
                         <tr>
-                            <th>Quantidade</th>
+                            <th>Qtd</th>
                             <th>Produto</th>
                             <th>Valor Unitario</th>
                             <th>Sub-total</th>
@@ -43,9 +43,7 @@
                         @endphp
                         @foreach($data->productId as $item)
                             <tr>
-                                    <td>
-                                        <span>{{$item->quanty}}</span>
-                                    </td>    
+                                    <td>{{$item->quanty}} </td> 
                                     <td>{{$item->produtsIds->name}}</td> 
                                     <td>R$_{{$item->produtsIds->price}}</td>
                                     <td>R$_{{ number_format($item->produtsIds->price * $item->quanty,2,',','.')}}</td>
@@ -59,12 +57,12 @@
                     </tbody>
                 </table>
            
-                    <div class="card-body">
+                    <div class="card-body ">
                         <div class="container-fluid ">
                             <div class="row col-12 d-flex justify-content-center">
                                 <div class="m-2">
                                     <p class="text-center mb-0">TOTAL</p>
-                                    <input type="text" name="total" value="R${{$total ?? ''}}" placeholder="TOTAL"
+                                    <input type="text" name="total" value="R${{ ($total != 0 && $total != '' ? number_format($total, 2, ',', '.') : '') }}" placeholder="TOTAL"
                                     style="width:120px; height:60px;" 
                                     disabled class="text-center  border border-success rounded ">
                                </div>
@@ -98,6 +96,14 @@
                                                 <input type="tel" class="form-control" id="zipcod" value= "{{$data->demanduser->address->zipcode ?? ''}}"name="zipcode" placeholder="telefone">
                                             </div>
                                         </div>
+{{-- 
+                                        <div class="col-md-6">
+                                            <select name="categorie_id" id="">
+                                                @foreach ($demand as $item)
+                                                    <option value="{{ $item->id }}"> {{ $item->id }}</option>                                
+                                                @endforeach
+                                            </select>
+                                        </div> --}}
                             </div>
                             <hr class="bg-green" style="height:5px;">
                         </div>

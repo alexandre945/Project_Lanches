@@ -82,7 +82,7 @@
             </div>
              --}}
             <div class="row">
-                <div class="col-12">
+                <div class="col-md-12 col-sm-4">
                     <div class="card card-info">
                         <div class="card-header">
                             <h3 class="card-title">Listagem de Bebidas</h3>
@@ -112,7 +112,7 @@
                         @endif
                         <div class="card-body">
                             @if (isset($product) && $product->isNotEmpty())
-                                <table class="table-responsive table-bordered">
+                                <table class="table-responsive table-bordered col-md-12 col-sm-4">
                                     <thead>
                                     <tr>
                                         <th>ID</th>

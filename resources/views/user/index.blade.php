@@ -7,8 +7,8 @@
 
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1><strong><i>Escolha seus Lanches aqui</i></strong></h1>
+            <div class="col-md-12 col-sm-2  text-center">
+                <h3><i>Escolha seus Lanches aqui</i></h3>
             </div>
       
         </div>
@@ -19,9 +19,9 @@
     <section class="content">
         <div class="container">
             <div class="row">
-                <div class="col-12 col">
+                <div class="col-md-12">
                     <div class="card card-info">
-                        <div class="card-header ">
+                        <div class="card-header text-center col-md-12">
                             <a href="{{route('user.index')}}" class="text-center"><i>LANCHES</i></a>
                             <a href="{{route('comboIndex.show')}}" class="m-3"><i>COMBOS</i></a>
                             <a href="{{route('drink.show')}}" class="m-3"><i>BEBIDAS</i></a>
@@ -54,9 +54,9 @@
 
                            </div>
                         @endif
-                        <div class="card-body">
+                        <div class="card-body col-md-12 col-sm-4">
                             @if (isset($product) && $product->isNotEmpty())
-                                <table class="table-responsive table-bordered table-sm">
+                                <table class=" table-responsive table-bordered col-md-12 col-sm-4">
                                     <thead>
                                         <tr>
                                             <th  class="p-2"><i>Name</i></th>

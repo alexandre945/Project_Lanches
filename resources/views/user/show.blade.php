@@ -7,8 +7,8 @@
 
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1><strong>Escolha suas Bebidas aqui:</strong></h1>
+            <div class="col-md-12 col-sm-4 text-center">
+                <h5><i>ESCOLHA AQUI SUAS BEBIDAS</i></h5>
             </div>
       
         </div>
@@ -19,9 +19,9 @@
     <section class="content">
         <div class="container">
             <div class="row">
-                <div class="col-12 col">
+                <div class="col-md-12 col-sm-4">
                     <div class="card card-info">
-                        <div class="card-header ">
+                        <div class="card-header text-center col-md-12 col-sm-4">
                             <a href="{{route('user.index')}}" class="text-center">LANCHES</a>
                             <a href="{{route('comboIndex.show')}}" class="m-3">COMBOS</a>
                             <a href="{{route('drink.show')}}" class="m-3">BEBIDAS</a>
@@ -48,7 +48,7 @@
                         @endif
                         <div class="card-body">
                             @if (isset($product) && $product->isNotEmpty())
-                                <table  class="table-responsive table-bordered table-sm">
+                                <table  class="table-bordered col-md-12 col-sm-4">
                                     <thead>
                                         <tr>
                                             <th class="p-2">Name</th>
@@ -95,8 +95,8 @@
                                                 <form action="{{route('cart.store',$item->id)}}" method="POST" style="display: inline" >
                                                 @method('Post')
                                                 @csrf
-                                                <button class="btn btn-primary" title="Adicionar ao carrinho">
-                                                    <i class="fas fa-shopping-cart">Adicionar</i>
+                                                <button class="btn btn-primary fs-1" style="width:90px;" title="Adicionar ao carrinho">
+                                                    <i class="fas fa-shopping-cart">Add</i>
                                                 </button>
                                                 </form>
                                             </td>

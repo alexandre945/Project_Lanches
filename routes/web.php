@@ -69,10 +69,10 @@ Route::post('/adreesses/create',[UserController::class, 'store'])->name('adeesse
 
 // adimin pedidos
 
-Route::get('/adimin/index',[AdminController::class, 'index'])->name('admin.demand');
+Route::get('/adimin/index',[AdminController::class, 'index'])->middleware(['auth'])->name('admin.demand');
 
 //close pedidos
 
-Route::get('/close',[CloseController::class, 'index'])->name('close.index');
+Route::get('/close/index',[CloseController::class, 'index'])->name('close.index');
 Route::post('/close/update/{id}',[CloseController::class, 'update'])->name('close.update');
 

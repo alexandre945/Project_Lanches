@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Demand;
+use App\Models\User;
+use App\Models\Address;
+use Illuminate\Support\Facades\Auth;
 
 class CloseController extends Controller
 {
@@ -21,7 +24,14 @@ class CloseController extends Controller
 
     public function index()
     {
-       return view('close.index');
+        $user = Auth::user()->name;
+        $item = Demand::where([
+            'status' => 'PG',
+            'user_id' => Auth::user()->id,
+        ])->whereDate('created_at', '=', date('Y-m-d'))
+        ->with('productId')->first();     
+
+       return view('close.index', compact('item','user'));
     }
 
     /**
@@ -76,13 +86,19 @@ class CloseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Demand::where([
-            'status' => 'RE',
-        ])->whereDate('created_at', '=', date('Y-m-d'))
-        ->update(['status' => 'PG']);
-        
-
-        return view('close.index', compact('data'));
+        $user = Auth::user()->id;
+        $adreess = Address::where('user_id', $user)->get();
+      
+      if ($adreess->count() > 0){
+        $data = Demand::findOrFail($request->id)->where([
+            'status' => 'RE', 'user_id' => $user])
+            ->whereDate('created_at', '=', date('Y-m-d'))
+            ->update(['status' => 'PG']);
+    
+      } else {
+        return redirect()->route('show.cart')->with('message','precisa prencher os campos de endereço abaixo para fechar seu pedido');
+      }
+        return redirect()->route('close.index', compact('data'))->with('success','Seu Pedido foi enviado com sucesso,Aguarde a Entrega!');
     }
 
     /**

@@ -5,18 +5,17 @@
 @section('title', 'AdminLTE')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Dashboard</h1>
+    <h1 class="m-0 text-dark ">Dashboard</h1>
 @stop
 
 @section('content')
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 col-6 ">
+            <div class=" bg-violet-700">
+<h1>ok</h1>
+            </div>
 
-@can('user')
-dados do suario
-@elsecan('adimin')
-dados do adimin
-@endcan
+
         </div>
     </div>
 @stop

@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
         <div class="col-sm-6">
-            <h1  class="text-center"><strong>Lanches</strong></h1>
+            <h3 class="text-center"><strong><i>LANCHES</i></strong></h3>
         </div>
         <div class="">
             <div class=" d-flex justify-content-start">
@@ -82,11 +82,11 @@
             </div>
              --}}
             <div class="row">
-                <div class="col-12">
+                <div class="col-md-12 col-ms-4">
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title">Listagem de Lanches</h3>
-                            <a href="{{route('admin.index')}}" class="text-center ml-5">LANCHES</a>
+                            {{-- <h3 class="card-title">Listagem de Lanches</h3> --}}
+                            <a href="{{route('admin.index')}}" class="text-center">LANCHES</a>
                             <a href="{{route('combo.index')}}" class="m-3">COMBOS</a>
                             <a href="{{route('drink.index')}}" class="m-3">BEBIDAS</a>
                             <a href="{{route('show.cart')}}"class="float-right" title="Ver suas Compras"><i class="fas fa-shopping-cart"></i></a>
@@ -105,41 +105,41 @@
                           </div>
                         @endif
                         @if(session('success'))
-                        <div class="alert alert-success">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <p>{{session('success')}}</p>
-                          </div>
+                            <div class="alert alert-success">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <p>{{session('success')}}</p>
+                            </div>
                         @endif
                         <div class="card-body">
                             @if (isset($product) && $product->isNotEmpty())
-                                <table class="table-responsive table-bordered">
+                                <table class="table-responsive table-bordered col-md-12 col-ms-4">
                                     <thead>
                                         <tr>
                                         
-                                            <th>Name</th>
-                                            <th>Descrição</th>
-                                            <th>Preço</th>
-                                            <th>Imagem</th>
-                                            <th>Ação</th>
+                                            <th class="p-2">Name</th>
+                                            <th class="p-2">Descrição</th>
+                                            <th class="p-2">Preço</th>
+                                            <th class="p-2">Imagem</th>
+                                            <th class="p-2">Ação</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($product as $item)
                                         <tr class="p-2">
                                        
-                                            <th>{{ $item->name }}</th>
-                                            <th>{{ $item->description}}</th>
-                                            <th>{{ $item->price }}</th>
+                                            <th class="p-2">{{ $item->name }}</th>
+                                            <th class="p-2">{{ $item->description}}</th>
+                                            <th class="p-2">{{ $item->price }}</th>
                                             <td class="p-2">
                                                 <img src="{{ asset('storage/'.$item->image) }}" style="width: 50px">
                                             </td>
-                                            <td>
+                                            <td class="p-2">
                                                 <div class="d-flex p-2">
                                                     <a href="{{ route('admin.update',$item->id)}}" title="Editar" class="btn btn-primary"> <i class="fas fa-edit"></i> </a>
                                                     <form action="{{route('admin.delete',$item->id)}}" method="POST" style="display: inline" >
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button class="btn btn-danger" title="Excluir">
+                                                    <button class="btn btn-danger P-2" title="Excluir">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </button>
                                                     </form>

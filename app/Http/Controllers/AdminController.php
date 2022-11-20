@@ -22,8 +22,7 @@ class AdminController extends Controller
     $user = Auth::user()->id;
 
     $users = Auth::user()->name;
-     
-    // $data = Demand::with(['productId'])->get();
+  
 
     $data = Demand::orderBy('id','desc')->where([
         'status' => 'PG',
