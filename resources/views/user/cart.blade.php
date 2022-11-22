@@ -67,7 +67,7 @@
                                                     </div>
                                                 </td> 
                                                     @php
-                                                    $total += $item->produtsIds->price * $item->quanty;
+                                                        $total += $item->produtsIds->price * $item->quanty;
                                                     @endphp   
                                                 <td>{{$item->produtsIds->name}}</td> 
                                                 <td>R$_{{ number_format($item->produtsIds->price,2,',','.')}}</td>
@@ -76,7 +76,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                    <div class="btn-group btn-group-justified">
+                    <div class=" btn-group btn-group-justified">
                         <a href="{{route('user.index')}}"><button class="btn btn-success m-2">CONTINUAR COMPRANDO</button></a>
                         <div class="p-2">
                                 <p class="text-center mb-0">TOTAL</p>
@@ -84,17 +84,17 @@
                                 style="width:120px; height:60px;" 
                                 disabled class="text-center  border border-success rounded ">
                         </div>
-                        <form action="{{route('close.update',$data->id)}}" method="POST">
-                            @csrf
-                                <button class="btn btn-success m-2">FECHAR PEDIDO</button>
-                        </form>
+                            <form action="{{route('close.update',$data->id)}}" method="POST">
+                                @csrf
+                                    <button class="btn btn-success m-2">FECHAR PEDIDO</button>
+                            </form>
                     
                     </div>
-        @else
-                <div class="alert alert-warning">
-                    <h5>Seu Carrinho está vazio</h5>
-                </div>
-        @endif
+                    @else
+                        <div class="alert alert-warning">
+                            <h5>Seu Carrinho está vazio</h5>
+                        </div>
+                    @endif
                     
                 </div>
     </div>

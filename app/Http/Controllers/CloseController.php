@@ -25,7 +25,7 @@ class CloseController extends Controller
     public function index()
     {
         $user = Auth::user()->name;
-        $item = Demand::where([
+        $item = Demand::orderBy('id','desc')->where([
             'status' => 'PG',
             'user_id' => Auth::user()->id,
         ])->whereDate('created_at', '=', date('Y-m-d'))
