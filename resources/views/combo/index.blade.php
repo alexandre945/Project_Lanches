@@ -6,7 +6,7 @@
 @section('content_header')
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-sm-6">
+            <div class="col-sm-6 ">
                 <h1><strong>COMBOS</strong></h1>
             </div>
             <div class="">
@@ -83,8 +83,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card card-info">
-                        <div class="card-header">
-                            <h3 class="card-title">Listagem de Combos</h3>
+                        <div class="card-header col-md-12 col-sm-4">
+                            {{-- <h3 class="card-title">Listagem de Combos</h3> --}}
                             <a href="{{route('admin.index')}}" class="text-center ml-5">LANCHES</a>
                             <a href="{{route('combo.index')}}" class="m-3">COMBOS</a>
                             <a href="{{route('drink.index')}}" class="m-3">BEBIDAS</a>
@@ -111,7 +111,7 @@
                         @endif
                         <div class="card-body">
                             @if (isset($product) && $product->isNotEmpty())
-                                <table class="table-repnsive table-bordered">
+                                <table class=" table-responsive table-bordered col-md-12 col-sm-4">
                                     <thead>
                                     <tr>
                                         <th>ID</th>

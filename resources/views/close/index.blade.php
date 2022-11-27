@@ -51,14 +51,11 @@
                            
                         </table>
                         <div class="row" style="margin-left:150px;">
-                            <div  class="card m-8 p-2 col-md-12 col-sm-4 d-flex align-center">
-                                {{-- <a href="{{route('user.index')}}"><button class="btn btn-success m-2">CONTINUAR COMPRANDO</button></a> --}}
-                                
+                            <div  class="card card-info m-8 p-2 col-md-12 col-sm-4 d-flex align-center">
                                         <p class="text-center mb-0">TOTAL</p>
                                         <input type="text" name="total" value="R${{ ($total != 0 && $total != '' ? number_format($total, 2, ',', '.') : '') }}" placeholder="TOTAL"
                                         style="width:120px; height:60px;" 
                                         disabled class="text-center  border border-success rounded ">
-                                        
                             </div>
                         </div>
                     @if(session('success'))

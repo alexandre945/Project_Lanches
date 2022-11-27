@@ -85,7 +85,7 @@
                 <div class="col-md-12 col-sm-4">
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title">Listagem de Bebidas</h3>
+                            {{-- <h3 class="card-title">Listagem de Bebidas</h3> --}}
                             <a href="{{route('admin.index')}}" class="text-center ml-5">LANCHES</a>
                             <a href="{{route('combo.index')}}" class="m-3">COMBOS</a>
                             <a href="{{route('drink.index')}}" class="m-3">BEBIDAS</a>

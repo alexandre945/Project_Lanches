@@ -25,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Demand::observe(DemandObserver::class);
+        // \URL::forceRootUrl(config('https://e146-170-254-194-94.sa.ngrok.io/'));
     }
 }

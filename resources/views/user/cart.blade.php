@@ -23,7 +23,7 @@
                     </div>
                     @endif
    
-                <div class="row"> 
+                <div class="row text-center"> 
                     <div class="card justify-contente-center m-2 p-2 col-md-12 col-sm-4">
                         <div class="text-center">
                             <i><h2 class="font-bold"> Produtos do seu Carrinho</h2></i>
@@ -37,7 +37,7 @@
                             <table class="table col-md-12 col-sm-4">
                                 <thead>
                                     <tr>
-                                        <th><i>Excluir</i></th>
+                                        {{-- <th><i>Excluir</i></th> --}}
                                         <th><i>Quantidade</i></th>
                                         <th><i>Produto</i></th>
                                         <th><i>Valor Unitario</i></th>
@@ -50,7 +50,7 @@
                                         @endphp
                                     @foreach($data->productId as $item)
                                         <tr>
-                                                <td>
+                                                {{-- <td>
                                                     <form action="{{route('delete.cart',$item->id)}}" method="POST" style="display: inline" >
                                                         @method('DELETE')
                                                         @csrf
@@ -58,12 +58,17 @@
                                                                 <i class="fas fa-trash-alt"></i>
                                                             </button>
                                                     </form>
-                                                </td>
+                                                </td> --}}
                                                 <td class= 'justify-contente-center'>
-                                                    <div class="justify-contente-center">
-                                                        <a href="#"><i class="fa fa-circle">-</i></a>
-                                                        <span>{{$item->quanty}}</span>
-                                                        <a href="#"><i class="fas fa-circle">+</i></a>
+                                                    <div class=" d-flex justify-contente-center">
+                                                        <form action="#">
+                                                            <button class="btn btn-primary"type="submit">-</button>
+                                                        </form>
+                                                        <form action="{{route('update.add',$item->id)}}" method="POST">
+                                                            @csrf
+                                                            <span>{{$item->quanty}}</span>
+                                                            <button class="btn btn-primary"type="submit">+</button>
+                                                        </form>
                                                     </div>
                                                 </td> 
                                                     @php
@@ -76,20 +81,28 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                    <div class=" btn-group btn-group-justified">
-                        <a href="{{route('user.index')}}"><button class="btn btn-success m-2">CONTINUAR COMPRANDO</button></a>
-                        <div class="p-2">
-                                <p class="text-center mb-0">TOTAL</p>
-                                <input type="text" name="total" value="R${{ ($total != 0 && $total != '' ? number_format($total, 2, ',', '.') : '') }}" placeholder="TOTAL"
-                                style="width:120px; height:60px;" 
-                                disabled class="text-center  border border-success rounded ">
-                        </div>
-                            <form action="{{route('close.update',$data->id)}}" method="POST">
-                                @csrf
-                                    <button class="btn btn-success m-2">FECHAR PEDIDO</button>
-                            </form>
-                    
-                    </div>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="d-flex p-2 col-md-12 col-sm-4  text-center">
+                                        <a href="{{route('user.index')}}"><button class="btn btn-success m-2">CONTINUAR COMPRANDO</button></a>
+                                        <div class="p-2 text-center">
+                                                <p class="text-center mb-0">TOTAL</p>
+                                                <input type="text" name="total" value="R${{ ($total != 0 && $total != '' ? number_format($total, 2, ',', '.') : '') }}" placeholder="TOTAL"
+                                                style="width:120px; height:60px;" 
+                                                disabled class="text-center  border border-success rounded ">
+                                        </div>
+                                            <form action="{{route('close.update',$data->id)}}" method="POST">
+                                                @csrf
+                                                    <button class="btn btn-success m-2 ">FECHAR PEDIDO</button>
+                                            </form>
+                                
+                                    </div>
+
+                                </div>
+                              
+
+                            </div>
+                 
                     @else
                         <div class="alert alert-warning">
                             <h5>Seu Carrinho está vazio</h5>

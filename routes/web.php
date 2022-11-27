@@ -7,6 +7,8 @@ use App\Http\Controllers\ControllerDrink;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CloseController;
+use App\Http\Controllers\UpdateController;
+use App\Http\Livewire\LivewireFirst;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -76,3 +78,10 @@ Route::get('/adimin/index',[AdminController::class, 'index'])->middleware(['auth
 Route::get('/close/index',[CloseController::class, 'index'])->name('close.index');
 Route::post('/close/update/{id}',[CloseController::class, 'update'])->name('close.update');
 
+// livewire
+
+Route::get('livewire-first',\App\Http\Livewire\LivewireFirst::class)->name('livewire.first');
+
+// update da quanty
+
+Route::post('/update/add/{id}',[UpdateController::class, 'update'])->name('update.add');
