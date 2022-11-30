@@ -61,13 +61,14 @@
                                                 </td> --}}
                                                 <td class= 'justify-contente-center'>
                                                     <div class=" d-flex justify-contente-center">
-                                                        <form action="#">
-                                                            <button class="btn btn-primary"type="submit">-</button>
+                                                        <form action="{{route('update.sub',$item->id)}}" method="POST">
+                                                            @csrf
+                                                            <button class="btn btn-primary"type="submit"style="border-radius:20px; height:32px">-</button>
                                                         </form>
                                                         <form action="{{route('update.add',$item->id)}}" method="POST">
                                                             @csrf
                                                             <span>{{$item->quanty}}</span>
-                                                            <button class="btn btn-primary"type="submit">+</button>
+                                                            <button class="btn btn-primary"type="submit" style="border-radius:20px; height:32px">+</button>
                                                         </form>
                                                     </div>
                                                 </td> 

@@ -25,5 +25,20 @@ class UpdateController extends Controller
         
          return redirect()->route('show.cart',compact('demand'));  
      }
+
+     public function updateSub(Request $request, $id)
+       {
+        
+        $demand = Demand_Product::findOrFail($id);
+     
+        if ($demand->quanty > 1){
+            $demand->decrement('quanty');
+
+            } else {
+                $demand->delete();
+            }
+
+            return redirect()->route('show.cart',compact('demand')); 
+       }
     
 }

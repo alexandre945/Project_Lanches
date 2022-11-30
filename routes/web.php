@@ -85,3 +85,4 @@ Route::get('livewire-first',\App\Http\Livewire\LivewireFirst::class)->name('live
 // update da quanty
 
 Route::post('/update/add/{id}',[UpdateController::class, 'update'])->name('update.add');
+Route::post('/update/sub/{id}',[UpdateController::class, 'updateSub'])->name('update.sub');
